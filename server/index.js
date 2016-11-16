@@ -6,7 +6,8 @@ const path = require('path')
 
 const port = process.env.PORT || 8000
 
-const server = express.createServer()
+const server = express()
+const router = express.Router()
 
 const layout = fs.readFileSync('client/index.html', 'utf8')
 
@@ -25,6 +26,8 @@ server.use('/images', express.static(
 server.get('/', (request, response) => {
   response.send(layout)
 })
+
+server.get('/api', router)
 
 server.listen(port, error => {
   if (error) throw error
