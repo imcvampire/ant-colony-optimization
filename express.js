@@ -9,19 +9,8 @@ const port = process.env.PORT || 8000
 const server = express()
 const router = express.Router()
 
-const layout = fs.readFileSync('client/index.html', 'utf8')
+const layout = fs.readFileSync('dist/index.html', 'utf8')
 
-server.use('/js', express.static(
-  path.resolve(__dirname, 'client/js')
-))
-
-server.use('/css', express.static(
-  path.resolve(__dirname, 'client/css')
-))
-
-server.use('/images', express.static(
-  path.resolve(__dirname, 'client/images')
-))
 
 server.get('/', (request, response) => {
   response.send(layout)

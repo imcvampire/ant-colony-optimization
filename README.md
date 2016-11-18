@@ -40,3 +40,20 @@ Folder structure
 - webpack.config.js 
 ...
 ```
+
+Scripts
+-------
+
+```json
+\\ package.json
+
+{
+  ...
+  "scripts": {
+    "start": "start dist/index.html",
+    "server": "node express.js",
+    "build": "webpack"
+  },
+  ...
+}
+```
