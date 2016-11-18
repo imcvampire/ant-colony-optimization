@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "dist/index.html",
+    "start": "start dist/index.html",
     "server": "node express.js",
     "build": "webpack"
   },

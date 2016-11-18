@@ -1,42 +1,52 @@
-import { pass, delay } from './helpers.js';
+import { pass, delay } from '../helpers.js';
 
-import { Ant } from './ant.js';
-import { Colony } from './colony.js';
-import { TSP } from './tsp.js';
+import { Ant } from '../aco/ant.js';
+import { Colony } from '../aco/colony.js';
+import { TSP } from '../problem/tsp.js';
 
 
 /**
  * Ant Colony Optimization algorithm demo
  * 
  * @param {TSP} tsp
- * @param {{logRoute: function(number[]), logGraphInfo: function(number[][])}} logger
  */
-function acoDemo(tsp, logger = {
-						logGraphInfo: () => {},
-						logRoute: () => {}
-					}, infos = {
-						numberOfAnts: 20,
-						rho: 1,
-						alpha: 1,
-						beta: 1,
-						Q: 1
-					})
-{
-	let colony = new Colony(infos.numberOfAnts, tsp.distances);
-
-	let period = pass();
-	for (let i = 0; i < 100; ++i)
+export function acoDemo(tsp,
 	{
-		period = period.then(() =>
-		{
-			colony.nextPeriod();
+		logRoute = () => { },
+		logGraphInfo = () => { }
+	}, {
+		numberOfAnts = 2,
+		rho = 1,
+		alpha = 1,
+		beta = 1,
+		Q = 1,
+		duration = 100
+	}) {
 
-			logger.logGraphInfo(colony.pheromones);
-			logger.logRoute(colony.distances);
+	let colony = new Colony(tsp.distances, {
+		numberOfAnts: numberOfAnts,
+		rho: rho,
+		alpha: alpha,
+		beta: beta,
+		Q: Q
+	});
+
+	let periods = pass();
+	for (let i = 0; i < 100; ++i) {
+		periods = periods.then(() => {
+			let notify = (route, length) => {
+				logRoute(i, route, length);
+			}
+			colony.setNotify(notify);
+			
+			colony.iterate();
+
+			logGraphInfo(colony.pheromones);
 		})
-		.then()
-		.then(delay(800));
+			.then(delay(duration));
 	}
 
-	return periods
+	periods.then(() => console.log('done'));
+
+	return periods;
 }

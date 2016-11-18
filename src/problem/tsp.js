@@ -1,31 +1,25 @@
+import { distance } from '../helpers.js';
+
 /**
  * Travel Saleman Problem
  */
-export class TSP
-{
+export class TSP {
 	/**
 	 * @param {number} [numberOfNodes]
 	 */
-	constructor(numberOfNodes)
-	{
+	constructor(numberOfNodes = 20) {
+		/** @readonly */
+		this.numberOfNodes;
+
+		this.width = 20;
+		this.height = 20;
+
+		/** @readonly */
+		this.nodes = [];
+		/** @readonly */
 		this.distances = [[]];
 
-		/**
-		 * @readonly
-		 */
-		this.numberOfNodes = 0;
-
-		this.width = 10;
-		this.height = 10;
-
-		/**
-		 * @param {any} logger
-		 * @return {Promise<any>}
-		 */
-		this.solution = (logger) => {};
-		this.logger = {};
-
-		if (numberOfNodes) { this.generateRandomNodes() };
+		this.generateRandomNodes(numberOfNodes);
 	}
 
 	/**
@@ -33,14 +27,15 @@ export class TSP
 	 * 
 	 * @param {number} numberOfNodes
 	 */
-	generateRandomNodes(numberOfNodes)
-	{
-		let randomNode = () =>
-		{
-			return {x: Math.random() * this.width, y: Math.random() * this.height}
+	generateRandomNodes(numberOfNodes) {
+		let randomNode = () => {
+			return { x: Math.random() * this.width, y: Math.random() * this.height }
 		}
 
-		this.distances = Array.from({length: numberOfNodes}, randomNode);
+		this.nodes = Array.from({ length: numberOfNodes }, randomNode);
 		this.numberOfNodes = numberOfNodes;
+		this.distances = Array.from({ length: numberOfNodes }, (vi, i) => {
+			return Array.from({ length: numberOfNodes }, (vj, j) => distance(this.nodes[i], this.nodes[j]));
+		});
 	}
 }

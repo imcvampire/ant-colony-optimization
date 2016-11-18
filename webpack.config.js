@@ -13,8 +13,8 @@ module.exports = {
   },
 
   output: {
-      path: 'dist',
-      publicPath: 'dist',
+      path: './dist',
+      publicPath: './dist',
       filename: '[name].js',
       sourceMapFilename: '[name].js.map',
       chunkFilename: '[id].chunk.js'
