@@ -1,4 +1,4 @@
-import { acoDemo } from 'demo';
+import { acoDemo } from 'demo/demo';
 import { TSP } from 'problem/tsp';
 
 
@@ -8,11 +8,12 @@ let logger = {
 	logRoute: function (period, route, length) {
 		console.log(period, route, length);
 	},
-	logGraphInfo: function (graph) { }
+	logGraphInfo: function (graph) { console.log(graph) }
 }
 
 acoDemo(tsp, logger, {
 	numberOfAnts: 10,
 	rho: 0.1,
-	duration: 10
+	duration: 10,
+	pher: 1
 });

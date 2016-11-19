@@ -4,9 +4,10 @@ export class Colony {
 	/**
 	 * @param {number[][]} distances
 	 */
-	constructor(distances, { numberOfAnts = 20, rho = 1, alpha = 1, beta = 1, Q = 1	}) {
+	constructor(distances, { numberOfAnts = 20, rho = 1, alpha = 1, beta = 1, Q = 1, pher = 1 }) {
 		this.distances = distances;
 		this.pheromones = [];
+		this.phermone = pher
 
 		this.initializePheromones();
 
@@ -25,7 +26,7 @@ export class Colony {
 
 	initializePheromones() {
 		this.pheromones = this.distances.map((v, i) => v.map((n, j) => {
-			return this.distances[i][j];
+			return this.pher;
 		}));
 	}
 

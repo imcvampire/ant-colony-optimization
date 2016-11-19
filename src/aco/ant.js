@@ -1,7 +1,7 @@
 import { randomIndexFrom, range, sumOf } from 'stuff/math';
 import { lengthOfRoute } from 'stuff/route';
 
-import { twoOptComplete } from 'opt';
+import { twoOptComplete } from 'opt/opt';
 
 export class Ant {
 	constructor({alpha = 1, beta = 1, Q = 1}) {

@@ -1,6 +1,7 @@
 import { pass, delay } from 'stuff/promise';
+import { sumOf } from 'stuff/math';
 import { TSP } from 'problem/tsp';
-import { Colony } from 'aco';
+import { Colony } from 'aco/colony';
 
 
 /**
@@ -13,6 +14,7 @@ export function acoDemo(tsp,
 		logRoute = () => { },
 		logGraphInfo = () => { }
 	}, {
+		pher = 1,
 		numberOfAnts = 2,
 		rho = 1,
 		alpha = 1,
@@ -26,7 +28,8 @@ export function acoDemo(tsp,
 		rho: rho,
 		alpha: alpha,
 		beta: beta,
-		Q: Q
+		Q: Q,
+		pher: pher
 	});
 
 	let periods = pass();
@@ -39,7 +42,7 @@ export function acoDemo(tsp,
 			
 			colony.iterate();
 
-			logGraphInfo(colony.pheromones);
+			logGraphInfo(sumOf(colony.pheromones));
 		})
 			.then(delay(duration));
 	}

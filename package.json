@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "start dist/index.html",
-    "server": "node express.js",
+    "server": "start http://localhost:5000 && node express.js",
     "build": "webpack"
   },
   "dependencies": {
