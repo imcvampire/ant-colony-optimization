@@ -13,19 +13,23 @@ module.exports = {
   },
 
   output: {
-      path: './dist',
-      publicPath: './dist',
-      filename: '[name].js',
-      sourceMapFilename: '[name].js.map',
-      chunkFilename: '[id].chunk.js'
+    path: './dist',
+    publicPath: './dist',
+    filename: '[name].js',
+    sourceMapFilename: '[name].js.map',
+    chunkFilename: '[id].chunk.js'
   },
 
   resolve: {
-      extensions: ['', '.js', '.json', '.css', '.html']
+    root: [
+      path.resolve('./src')
+    ],
+
+    extensions: ['', '.js', '.json', '.css', '.html']
   },
 
   devtool: 'source-map',
-  debug:   true,
+  debug: true,
 
   module: {
     loaders: [

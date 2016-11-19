@@ -24,12 +24,17 @@ Folder structure
   + \aco
     - ant.js
     - colony.js
+    - index.js
   + \demo
-    - demo.js
-  + \perm
-    - permutation.js
+    - index.js
   + \problem
     - tsp.js
+  + \opt
+    - index.js
+  + \stuff
+    - math.js
+    - promise.js
+    - route.js
   - helpers.js
   - index.html
   - index.js

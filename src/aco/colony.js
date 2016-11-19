@@ -1,5 +1,4 @@
 import { Ant } from './ant.js';
-import { lengthOfRoute } from '../helpers.js';
 
 export class Colony {
 	/**

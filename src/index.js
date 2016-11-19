@@ -1,7 +1,8 @@
-import { acoDemo } from './demo/demo.js';
-import { TSP } from './problem/tsp.js';
+import { acoDemo } from 'demo';
+import { TSP } from 'problem/tsp';
 
-let tsp = new TSP(100);
+
+let tsp = new TSP(20);
 
 let logger = {
 	logRoute: function (period, route, length) {
@@ -11,7 +12,7 @@ let logger = {
 }
 
 acoDemo(tsp, logger, {
-	numberOfAnts: 40,
+	numberOfAnts: 10,
 	rho: 0.1,
 	duration: 10
 });
