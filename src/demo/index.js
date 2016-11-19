@@ -1,5 +1,6 @@
 import { pass, delay } from 'stuff/promise';
 import { TSP } from 'problem/tsp';
+import { Colony } from 'aco';
 
 
 /**

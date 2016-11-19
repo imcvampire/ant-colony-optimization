@@ -14,7 +14,6 @@ module.exports = {
 
   output: {
     path: './dist',
-    publicPath: './dist',
     filename: '[name].js',
     sourceMapFilename: '[name].js.map',
     chunkFilename: '[id].chunk.js'
@@ -40,6 +39,10 @@ module.exports = {
       },
       {
         test: /\.html$/,
+        loader: 'file-loader?name=[name].[ext]!extract-loader!html-loader?attrs=link:href'
+      },
+      {
+        test: /\.css$/,
         loader: 'file-loader?name=[name].[ext]'
       }
     ]
