@@ -1,4 +1,5 @@
-import { acoDemo } from 'demo';
+import { acoDemo } from 'demo/aco';
+import { nnDemo } from 'demo/nn';
 import { TSP } from 'problem/tsp';
 
 
@@ -14,5 +15,7 @@ let logger = {
 acoDemo(tsp, logger, {
 	numberOfAnts: 10,
 	rho: 0.1,
-	duration: 10
+	duration: 1
 });
+
+nnDemo(tsp, logger);
