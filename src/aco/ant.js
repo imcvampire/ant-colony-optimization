@@ -31,7 +31,7 @@ export class Ant {
 					return route.indexOf(node) == -1
 				}),
 				nextNode = this.nextNode(currentNode, unvisited, distances, pheromones);
-
+				
 			route.push(nextNode);
 		}
 
@@ -41,6 +41,7 @@ export class Ant {
 		route.push(this.base);
 
 		this.route = route;
+
 		this.routeLength = lengthOfRoute(this.route, distances);
 	}
 
@@ -63,6 +64,7 @@ export class Ant {
 		let weights = unvisited.map(node => {
 			return calculateWeight(distances[currentNode][node], pheromones[currentNode][node]);
 		});
+
 		let sumOfWeights = sumOf(weights);
 		let probs = weights.map(weight => weight / sumOfWeights);
 

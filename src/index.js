@@ -9,7 +9,7 @@ let logger = {
 	logRoute: function (period, route, length) {
 		console.log(period, route, length);
 	},
-	logGraphInfo: function (graph) { console.log(graph) }
+	logGraphInfo: function (graph) { }
 }
 
 acoDemo(tsp, logger, {

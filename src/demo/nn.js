@@ -12,5 +12,5 @@ export function nnDemo(tsp,
 	
 	let route = nearestNeighboorAlgo(tsp.distances);
 
-	logRoute(0, route, lengthOfRoute(route));
+	logRoute('nn', route, lengthOfRoute(route, tsp.distances));
 }

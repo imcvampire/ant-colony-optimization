@@ -7,7 +7,7 @@ export class Colony {
 	constructor(distances, { numberOfAnts = 20, rho = 1, alpha = 1, beta = 1, Q = 1, pher = 1 }) {
 		this.distances = distances;
 		this.pheromones = [];
-		this.phermone = pher
+		this.pher = pher
 
 		this.initializePheromones();
 
