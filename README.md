@@ -10,6 +10,27 @@ Install Package Dependencies
 npm i
 ```
 
+Build Project
+-------------
+
+```bash
+npm run build
+```
+
+Run
+---
+
+```
+npm start
+```
+
+or
+
+```
+npm run server
+```
+
+
 Folder structure
 ----------------
 
@@ -24,13 +45,12 @@ Folder structure
   + \aco
     - ant.js
     - colony.js
-    - index.js
   + \demo
-    - index.js
+    - demo.js
   + \problem
     - tsp.js
   + \opt
-    - index.js
+    - opt.js
   + \stuff
     - math.js
     - promise.js
@@ -44,21 +64,4 @@ Folder structure
 - express.js
 - webpack.config.js 
 ...
-```
-
-Scripts
--------
-
-```json
-\\ package.json
-
-{
-  ...
-  "scripts": {
-    "start": "start dist/index.html",
-    "server": "node express.js",
-    "build": "webpack"
-  },
-  ...
-}
 ```
