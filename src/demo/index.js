@@ -1,8 +1,5 @@
-import { pass, delay } from '../helpers.js';
-
-import { Ant } from '../aco/ant.js';
-import { Colony } from '../aco/colony.js';
-import { TSP } from '../problem/tsp.js';
+import { pass, delay } from 'stuff/promise';
+import { TSP } from 'problem/tsp';
 
 
 /**

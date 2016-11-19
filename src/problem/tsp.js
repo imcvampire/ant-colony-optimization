@@ -1,4 +1,4 @@
-import { distance } from '../helpers.js';
+import { distance } from 'stuff/route';
 
 /**
  * Travel Saleman Problem

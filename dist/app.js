@@ -3,7 +3,7 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(7);
+	module.exports = __webpack_require__(11);
 
 
 /***/ },
@@ -14,9 +14,9 @@ webpackJsonp([0],[
 	
 	var _demo = __webpack_require__(2);
 	
-	var _tsp = __webpack_require__(6);
+	var _tsp = __webpack_require__(10);
 	
-	var tsp = new _tsp.TSP(100);
+	var tsp = new _tsp.TSP(20);
 	
 	var logger = {
 		logRoute: function logRoute(period, route, length) {
@@ -26,8 +26,8 @@ webpackJsonp([0],[
 	};
 	
 	(0, _demo.acoDemo)(tsp, logger, {
-		numberOfAnts: 40,
-		rho: 2,
+		numberOfAnts: 10,
+		rho: 0.1,
 		duration: 10
 	});
 
@@ -42,13 +42,11 @@ webpackJsonp([0],[
 	});
 	exports.acoDemo = acoDemo;
 	
-	var _helpers = __webpack_require__(3);
+	var _promise = __webpack_require__(3);
 	
-	var _ant = __webpack_require__(4);
+	var _aco = __webpack_require__(4);
 	
-	var _colony = __webpack_require__(5);
-	
-	var _tsp = __webpack_require__(6);
+	var _tsp = __webpack_require__(10);
 	
 	/**
 	 * Ant Colony Optimization algorithm demo
@@ -74,7 +72,7 @@ webpackJsonp([0],[
 		    duration = _ref2$duration === undefined ? 100 : _ref2$duration;
 	
 	
-		var colony = new _colony.Colony(tsp.distances, {
+		var colony = new Colony(tsp.distances, {
 			numberOfAnts: numberOfAnts,
 			rho: rho,
 			alpha: alpha,
@@ -82,7 +80,7 @@ webpackJsonp([0],[
 			Q: Q
 		});
 	
-		var periods = (0, _helpers.pass)();
+		var periods = (0, _promise.pass)();
 	
 		var _loop = function _loop(i) {
 			periods = periods.then(function () {
@@ -94,7 +92,7 @@ webpackJsonp([0],[
 				colony.iterate();
 	
 				logGraphInfo(colony.pheromones);
-			}).then((0, _helpers.delay)(duration));
+			}).then((0, _promise.delay)(duration));
 		};
 	
 		for (var i = 0; i < 100; ++i) {
@@ -115,18 +113,220 @@ webpackJsonp([0],[
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.pass = pass;
+	exports.delay = delay;
+	/**
+	 * Pass the arguments for next promise task
+	 */
+	function pass() {
+	  for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
+	    arg[_key] = arguments[_key];
+	  }
+	
+	  return new Promise(function (resolve) {
+	    resolve.apply(undefined, arg);
+	  });
+	}
+	
+	/**
+	 * Delay promise in given duration
+	 * 
+	 * E.g.
+	 * ```
+	 * emit('ok').then(delay(duration)).then(console.log);
+	 * ```
+	 * 
+	 * @param {number} duration millisecond
+	 */
+	function delay(duration) {
+	  return function () {
+	    for (var _len2 = arguments.length, arg = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	      arg[_key2] = arguments[_key2];
+	    }
+	
+	    return new Promise(function (resolve) {
+	      setTimeout(function () {
+	        resolve.apply(undefined, arg);
+	      }, duration);
+	    });
+	  };
+	}
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _ant = __webpack_require__(5);
+	
+	Object.defineProperty(exports, 'Ant', {
+	  enumerable: true,
+	  get: function get() {
+	    return _ant.Ant;
+	  }
+	});
+	
+	var _colony = __webpack_require__(9);
+	
+	Object.defineProperty(exports, 'Colony', {
+	  enumerable: true,
+	  get: function get() {
+	    return _colony.Colony;
+	  }
+	});
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Ant = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _math = __webpack_require__(6);
+	
+	var _route = __webpack_require__(7);
+	
+	var _opt = __webpack_require__(8);
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var Ant = exports.Ant = function () {
+		function Ant(_ref) {
+			var _ref$alpha = _ref.alpha,
+			    alpha = _ref$alpha === undefined ? 1 : _ref$alpha,
+			    _ref$beta = _ref.beta,
+			    beta = _ref$beta === undefined ? 1 : _ref$beta,
+			    _ref$Q = _ref.Q,
+			    Q = _ref$Q === undefined ? 1 : _ref$Q;
+	
+			_classCallCheck(this, Ant);
+	
+			this.alpha = alpha;
+			this.beta = beta;
+			this.Q = Q;
+	
+			this.base = 0;
+	
+			this.route = [];
+			this.routeLength;
+		}
+	
+		/**
+	  * Construct a new solution
+	  * 
+	  * @param {number[][]} distances
+	  * @param {number[][]} pheromones
+	  */
+	
+	
+		_createClass(Ant, [{
+			key: 'findRoute',
+			value: function findRoute(distances, pheromones) {
+				var route = [this.base];
+				var numberOfNodes = distances.length;
+	
+				while (route.length < numberOfNodes) {
+					var currentNode = route[route.length - 1],
+					    unvisited = (0, _math.range)(numberOfNodes).filter(function (node) {
+						return route.indexOf(node) == -1;
+					}),
+					    nextNode = this.nextNode(currentNode, unvisited, distances, pheromones);
+	
+					route.push(nextNode);
+				}
+	
+				/** Optional */
+				// twoOptComplete(route, distances);
+	
+				route.push(this.base);
+	
+				this.route = route;
+				this.routeLength = (0, _route.lengthOfRoute)(this.route, distances);
+			}
+	
+			/**
+	   * Choose next node from probabilities
+	   * 
+	   * @param {number} currentNode
+	   * @param {number[]} unvisited
+	   * @param {number[][]} distances
+	   * @param {number[][]} pheromones
+	   */
+	
+		}, {
+			key: 'nextNode',
+			value: function nextNode(currentNode, unvisited, distances, pheromones) {
+				var _this = this;
+	
+				var numberOfNodes = distances.length;
+	
+				var calculateWeight = function calculateWeight(distance, pheromone) {
+					distance = distance < 0.1 ? 0.1 : distance;
+					return Math.pow(1 / distance, _this.alpha) * Math.pow(pheromone, _this.beta);
+				};
+	
+				var weights = unvisited.map(function (node) {
+					return calculateWeight(distances[currentNode][node], pheromones[currentNode][node]);
+				});
+				var sumOfWeights = (0, _math.sumOf)(weights);
+				var probs = weights.map(function (weight) {
+					return weight / sumOfWeights;
+				});
+	
+				var randomNode = unvisited[(0, _math.randomIndexFrom)(probs)];
+				return randomNode;
+			}
+	
+			/**
+	   * Leave trail marking
+	   * 
+	   * @param {number[][]} distances
+	   * @param {number[][]} pheromones
+	   */
+	
+		}, {
+			key: 'layPheromones',
+			value: function layPheromones(distances, pheromones) {
+				var numberOfNodes = distances.length;
+	
+				for (var i = 0; i < numberOfNodes; ++i) {
+					var currentNode = this.route[i],
+					    nextNode = this.route[i + 1];
+	
+					pheromones[currentNode][nextNode] += 1 / distances[currentNode][nextNode];
+					pheromones[nextNode][currentNode] += pheromones[currentNode][nextNode];
+				}
+			}
+		}]);
+
+		return Ant;
+	}();
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.sumOf = sumOf;
 	exports.range = range;
 	exports.randomIndexFrom = randomIndexFrom;
-	exports.pass = pass;
-	exports.delay = delay;
-	exports.twoOptSwap = twoOptSwap;
-	exports.twoOptComplete = twoOptComplete;
-	exports.distance = distance;
-	exports.lengthOfRoute = lengthOfRoute;
-	
 	/**
 	 * @param {number[]} arr
 	 */
@@ -166,44 +366,61 @@ webpackJsonp([0],[
 	
 		return randId;
 	}
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.distance = distance;
+	exports.lengthOfRoute = lengthOfRoute;
+	/**
+	 * Return distance between two point
+	 * 
+	 * @param {{x: number, y: number}} from
+	 * @param {{x: number, y: number}} to
+	 */
+	function distance(from, to) {
+		return Math.sqrt(Math.pow(to.x - from.x, 2) + Math.pow(to.y - from.y, 2));
+	}
 	
 	/**
-	 * Pass the arguments for next promise task
+	 * Give the total length of the route from matrix of distances
+	 * 
+	 * @param {number[]} route
+	 * @param {number[][]} distances
 	 */
-	function pass() {
-		for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
-			arg[_key] = arguments[_key];
+	function lengthOfRoute(route, distances) {
+		var len = route.length;
+	
+		var distance = 0;
+		for (var i = 0; i < len - 1; ++i) {
+			var cur = route[i],
+			    next = route[i + 1];
+	
+			distance += distances[cur][next];
 		}
 	
-		return new Promise(function (resolve) {
-			resolve.apply(undefined, arg);
-		});
+		return distance;
 	}
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	"use strict";
 	
-	/**
-	 * Delay promise in given duration
-	 * 
-	 * E.g.
-	 * ```
-	 * emit('ok').then(delay(duration)).then(console.log);
-	 * ```
-	 * 
-	 * @param {number} duration millisecond
-	 */
-	function delay(duration) {
-		return function () {
-			for (var _len2 = arguments.length, arg = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-				arg[_key2] = arguments[_key2];
-			}
-	
-			return new Promise(function (resolve) {
-				setTimeout(function () {
-					resolve.apply(undefined, arg);
-				}, duration);
-			});
-		};
-	}
-	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.twoOptSwap = twoOptSwap;
+	exports.twoOptComplete = twoOptComplete;
+	exports.distance = distance;
+	exports.lengthOfRoute = lengthOfRoute;
 	/**
 	 * Return a new route by performing 2-OPT swap
 	 * 
@@ -273,133 +490,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.Ant = undefined;
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _helpers = __webpack_require__(3);
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var Ant = exports.Ant = function () {
-		function Ant(_ref) {
-			var _ref$alpha = _ref.alpha,
-			    alpha = _ref$alpha === undefined ? 1 : _ref$alpha,
-			    _ref$beta = _ref.beta,
-			    beta = _ref$beta === undefined ? 1 : _ref$beta,
-			    _ref$Q = _ref.Q,
-			    Q = _ref$Q === undefined ? 1 : _ref$Q;
-	
-			_classCallCheck(this, Ant);
-	
-			this.alpha = alpha;
-			this.beta = beta;
-			this.Q = Q;
-	
-			this.base = 0;
-	
-			this.route = [];
-			this.routeLength;
-		}
-	
-		/**
-	  * Construct a new solution
-	  * 
-	  * @param {number[][]} distances
-	  * @param {number[][]} pheromones
-	  */
-	
-	
-		_createClass(Ant, [{
-			key: 'findRoute',
-			value: function findRoute(distances, pheromones) {
-				this.route = [this.base];
-				var numberOfNodes = distances.length;
-	
-				while (this.route.length < numberOfNodes) {
-					var currentNode = this.route[this.route.length - 1];
-					this.route.push(this.nextNode(currentNode, distances, pheromones));
-				}
-	
-				/** Optional */
-				// twoOptComplete(route, distances);
-	
-				this.route.push(this.base);
-				this.routeLength = (0, _helpers.lengthOfRoute)(this.route, distances);
-			}
-	
-			/**
-	   * Choose next node from probabilities
-	   * 
-	   * @param {number} currentNode
-	   * @param {number[][]} distances
-	   * @param {number[][]} pheromones
-	   */
-	
-		}, {
-			key: 'nextNode',
-			value: function nextNode(currentNode, distances, pheromones) {
-				var _this = this;
-	
-				var numberOfNodes = distances.length;
-	
-				var unvisited = function unvisited(node) {
-					return _this.route.indexOf(node) == -1;
-				};
-				var calculateWeight = function calculateWeight(distance, pheromone) {
-					distance = distance < 0.1 ? 0.1 : distance;
-					return Math.pow(1 / distance, _this.alpha) * Math.pow(pheromone, _this.beta);
-				};
-	
-				var unvisitedNodes = (0, _helpers.range)(numberOfNodes).filter(unvisited);
-	
-				var weights = unvisitedNodes.map(function (node) {
-					return calculateWeight(distances[currentNode][node], pheromones[currentNode][node]);
-				});
-				var sumOfWeights = (0, _helpers.sumOf)(weights);
-				var probs = weights.map(function (weight) {
-					return weight / sumOfWeights;
-				});
-	
-				var randomNode = unvisitedNodes[(0, _helpers.randomIndexFrom)(probs)];
-				return randomNode;
-			}
-	
-			/**
-	   * Leave trail marking
-	   * 
-	   * @param {number[][]} distances
-	   * @param {number[][]} pheromones
-	   */
-	
-		}, {
-			key: 'layPheromones',
-			value: function layPheromones(distances, pheromones) {
-				var numberOfNodes = distances.length;
-	
-				for (var i = 0; i < numberOfNodes; ++i) {
-					var currentNode = this.route[i],
-					    nextNode = this.route[i + 1];
-	
-					pheromones[currentNode][nextNode] += 1 / distances[currentNode][nextNode];
-					pheromones[nextNode][currentNode] += pheromones[currentNode][nextNode];
-				}
-			}
-		}]);
-
-		return Ant;
-	}();
-
-/***/ },
-/* 5 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -411,9 +502,7 @@ webpackJsonp([0],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _ant = __webpack_require__(4);
-	
-	var _helpers = __webpack_require__(3);
+	var _ant = __webpack_require__(5);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -565,7 +654,7 @@ webpackJsonp([0],[
 	}();
 
 /***/ },
-/* 6 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -577,7 +666,7 @@ webpackJsonp([0],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _helpers = __webpack_require__(3);
+	var _route = __webpack_require__(7);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -627,7 +716,7 @@ webpackJsonp([0],[
 				this.numberOfNodes = numberOfNodes;
 				this.distances = Array.from({ length: numberOfNodes }, function (vi, i) {
 					return Array.from({ length: numberOfNodes }, function (vj, j) {
-						return (0, _helpers.distance)(_this.nodes[i], _this.nodes[j]);
+						return (0, _route.distance)(_this.nodes[i], _this.nodes[j]);
 					});
 				});
 			}
@@ -637,7 +726,7 @@ webpackJsonp([0],[
 	}();
 
 /***/ },
-/* 7 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "index.html";
