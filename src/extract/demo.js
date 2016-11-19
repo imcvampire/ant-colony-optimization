@@ -3,5 +3,5 @@
  */
 var tps = require('./tps.js');
 var data = require('./data.js');
-var best_tour = tps.getSStruyennData(data.data40);
+var best_tour = tps.get_best_tour(data.data40);
 console.log(best_tour);

@@ -3,7 +3,7 @@
  */
 
 /* ============= utils ====================*/
-exports.getSStruyennData = function (data) {
+exports.get_best_tour = function (data) {
   var getDistance = function (start_point, end_point) {
     return Math.sqrt(Math.abs((start_point.x - end_point.x) * (start_point.x - end_point.x) - (start_point.y - end_point.y) * (start_point.y - end_point.y)));
   }
