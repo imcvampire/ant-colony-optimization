@@ -9,8 +9,8 @@ function executeCommand(command) {
 	});
 }
 
-if (process.argv.reduce((pre, cur) => pre || cur.toLowerCase == '--server'), false) {
-	switch (os.type().toUpperCase) {
+if (process.argv.find(arg => arg.toLowerCase() == '--server')) {
+	switch (os.type().toUpperCase()) {
 		case "WINDOWS_NT": {
 			executeCommand('start http://localhost:5000 && node express.js');
 			break;
