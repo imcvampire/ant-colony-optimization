@@ -4,15 +4,13 @@ import { distance } from 'stuff/route';
  * Travel Saleman Problem
  */
 export class TSP {
-	/**
-	 * @param {number} [numberOfNodes]
-	 */
-	constructor(numberOfNodes = 20) {
+
+	constructor(numberOfNodes = 20, { width = 500, height = 500 }) {
 		/** @readonly */
 		this.numberOfNodes;
 
-		this.width = 20;
-		this.height = 20;
+		this.width = width;
+		this.height = height;
 
 		/** @readonly */
 		this.nodes = [];

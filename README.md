@@ -58,6 +58,8 @@ Folder structure
     - math.js
     - promise.js
     - route.js
+  + \dashboard
+    - graph.js
   - helpers.js
   - index.html
   - index.js

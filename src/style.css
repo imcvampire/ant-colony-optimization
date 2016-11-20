@@ -1,3 +1,32 @@
 body {
-	background: dodgerblue;
+
+}
+
+#graph {
+	border: 1px solid #ddd;
+}
+
+#graph * {
+	transform: translate(5px, 5px);
+}
+
+circle.node {
+	/*stroke: dodgerblue;
+	stroke-width: 2px;
+	stroke-opacity: 0.6;*/
+	fill: orange;
+	r: 10;
+}
+
+circle.node:hover {
+	fill: red;
+}
+
+line.line {
+	stroke: deepskyblue;
+	stroke-width: 2px;
+}
+
+line.weight {
+	stroke: #999;
 }

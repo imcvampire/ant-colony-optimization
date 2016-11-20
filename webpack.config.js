@@ -6,11 +6,20 @@ let CommonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
   minChunks: Infinity
 })
 
+
+function option(argument) {
+  return process.argv.find(argument);
+}
+
+
+let entry = {
+  'app': ['./src/index.js', './src/index.html'],
+  'vendor': ['d3', 'jquery']
+}
+
+
 module.exports = {
-  entry: {
-    'app': ['./src/index.js', './src/index.html'],
-    'vendor': ['d3', 'jquery']
-  },
+  entry: entry,
 
   output: {
     path: './dist',

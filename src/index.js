@@ -2,12 +2,17 @@ import { acoDemo } from 'demo/aco';
 import { nnDemo } from 'demo/nn';
 import { TSP } from 'problem/tsp';
 
+import { Graph } from 'dashboard/graph';
 
-let tsp = new TSP(20);
+let graph = new Graph('#graph'),
+	tsp = new TSP(20, { width: 470, height: 470 });
+
+graph.setNodes(tsp.nodes);
 
 let logger = {
 	logRoute: function (period, route, length) {
 		console.log(period, route, length);
+		graph.setRoute(route);
 	},
 	logGraphInfo: function (graph) { }
 }
@@ -15,9 +20,9 @@ let logger = {
 acoDemo(tsp, logger, {
 	numberOfAnts: 10,
 	rho: 0.1,
-	duration: 10,
+	duration: 800,
 	pher: 1
+})
+.then(() => {
+	nnDemo(tsp, logger);
 });
-
-
-nnDemo(tsp, logger);
