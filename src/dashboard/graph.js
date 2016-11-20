@@ -1,5 +1,7 @@
 import * as d3 from 'd3';
 
+import { sumOf } from 'stuff/math';
+
 export class Graph {
 	constructor(selector) {
 		this.nodes = [];
@@ -29,7 +31,30 @@ export class Graph {
 	}
 
 	setWeights(weights) {
+		let lines = [];
+		for (let i = 0; i < this.nodes.length; ++i) {
+			for (let j = 0; j < this.nodes.length; ++j) {
+				lines.push({ from: i, to: j });
+			}
+		}
 
+		weights = weights.map(v => {
+			return v.map(weight => weight / (weight + 1));
+		})
+
+		this.weightElements.selectAll("line").remove();
+		this.weightElements.selectAll("line")
+			.data(lines).enter()
+			.append("line")
+			.classed("weight", true)
+			.attr("stroke", (data) => {
+				return `rgba(125, 125, 125, ${weights[data.from][data.to] * 255})`;
+			})
+			.attr("x1", data => this.nodes[data.from].x)
+			.attr("y1", data => this.nodes[data.from].y)
+			.attr("x2", data => this.nodes[data.to].x)
+			.attr("y2", data => this.nodes[data.to].y);
+			
 	}
 
 	setRoute(route) {

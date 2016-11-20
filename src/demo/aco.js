@@ -20,7 +20,8 @@ export function acoDemo(tsp,
 		alpha = 1,
 		beta = 1,
 		Q = 1,
-		duration = 100
+		duration = 100,
+		maxIteration = 100
 	}) {
 
 	let colony = new Colony(tsp.distances, {
@@ -29,18 +30,18 @@ export function acoDemo(tsp,
 		alpha: alpha,
 		beta: beta,
 		Q: Q,
-		pher: pher
+		pher: pher,
 	});
 
 	let periods = pass();
-	for (let i = 0; i < 100; ++i) {
+	for (let i = 0; i < maxIteration; ++i) {
 		periods = periods.then(() => {
 			let notify = (route, length) => {
 				logRoute(i, route, length);
 			}
 			colony.setNotify(notify);
 			colony.iterate();
-			logGraphInfo(sumOf(colony.pheromones));
+			logGraphInfo(colony.pheromones);
 		})
 		.then(delay(duration));
 	}

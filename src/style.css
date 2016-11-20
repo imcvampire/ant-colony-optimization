@@ -2,11 +2,11 @@ body {
 
 }
 
-#graph {
+.frame {
 	border: 1px solid #ddd;
 }
 
-#graph * {
+.frame * {
 	transform: translate(5px, 5px);
 }
 
@@ -24,9 +24,9 @@ circle.node:hover {
 
 line.line {
 	stroke: deepskyblue;
-	stroke-width: 2px;
+	stroke-width: 1.5px;
 }
 
 line.weight {
-	stroke: #999;
+	stroke-width: 3px;
 }
