@@ -39,12 +39,10 @@ export function acoDemo(tsp,
 				logRoute(i, route, length);
 			}
 			colony.setNotify(notify);
-			
 			colony.iterate();
-
 			logGraphInfo(sumOf(colony.pheromones));
 		})
-			.then(delay(duration));
+		.then(delay(duration));
 	}
 
 	periods.then(() => console.log('done'));

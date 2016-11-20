@@ -46,7 +46,10 @@ Folder structure
     - ant.js
     - colony.js
   + \demo
-    - demo.js
+    - aco.js
+    - nn.js
+  + \nn
+    - nn.js
   + \problem
     - tsp.js
   + \opt
