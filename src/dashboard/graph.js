@@ -39,7 +39,7 @@ export class Graph {
 		}
 
 		weights = weights.map(v => {
-			return v.map(weight => weight / (weight + 1));
+			return v.map(weight => Math.atan(1 - 1 / (Math.pow(weight / 400, 1.1)  + 1)) );
 		})
 
 		this.weightElements.selectAll("line").remove();

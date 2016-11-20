@@ -25,7 +25,7 @@ let logger = {
 
 acoDemo(tsp, logger, {
 	numberOfAnts: 10,
-	rho: 0.6,
+	rho: 0.2,
 	duration: 100,
 	pher: 1,
 	maxIteration: 50

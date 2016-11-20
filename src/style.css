@@ -2,8 +2,14 @@ body {
 
 }
 
+.container {
+	display: flex;
+	justify-content: center;
+}
+
 .frame {
-	border: 1px solid #ddd;
+	margin: 30px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 20px 36px rgba(0, 0, 0, 0.08);
 }
 
 .frame * {
@@ -11,11 +17,10 @@ body {
 }
 
 circle.node {
-	/*stroke: dodgerblue;
+	stroke: white;
 	stroke-width: 2px;
-	stroke-opacity: 0.6;*/
 	fill: orange;
-	r: 10;
+	r: 4;
 }
 
 circle.node:hover {
@@ -23,8 +28,8 @@ circle.node:hover {
 }
 
 line.line {
-	stroke: deepskyblue;
-	stroke-width: 1.5px;
+	stroke: tomato;
+	stroke-width: 3px;
 }
 
 line.weight {
