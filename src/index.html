@@ -11,6 +11,25 @@
 
 <body>
   <div class="container">
+    <form id="from-input">
+      <input type="number" id="node-number">
+
+      <select name="algorithm" id="algorithm">
+        <option value="nn">Nearest Neighboor</option>
+        <option value="aco">ACO</option>
+        <option value="opt">2-OPT Complete</option>
+      </select>
+
+      <input type="number" id="alpha">
+      <input type="number" id="beta">
+      <input type="number" id="rho">
+      <input type="number" id="pher">
+      <input type="number" id="q">
+
+      <button id="refresh">Refresh</button>
+      <button id="run">Run</button>
+    </form>
+
     <svg id="graph" class="frame" height="500" width="500">
 
     </svg>
@@ -19,7 +38,7 @@
 
     </svg>
   </div>
-  
+
   <script src="./app.js"></script>
 </body>
 </html>
