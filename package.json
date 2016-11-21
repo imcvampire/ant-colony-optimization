@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "npm run build && node index.js",
-    "server": "npm run build && node index.js --server",
+    "start": "node index.js",
+    "server": "node index.js --server",
     "build": "webpack"
   },
   "dependencies": {
@@ -9,6 +9,7 @@
     "express": "^4.14.0",
     "html-loader": "^0.4.4",
     "jquery": "^3.1.1",
+    "material-design-lite": "^1.2.1",
     "script-loader": "^0.7.0"
   },
   "devDependencies": {

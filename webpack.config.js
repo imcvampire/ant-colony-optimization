@@ -14,7 +14,7 @@ function option(argument) {
 
 let entry = {
   'app': ['./src/index.js', './src/index.html'],
-  'vendor': ['d3', 'jquery']
+  'vendor': ['d3', 'jquery', 'material-design-lite']
 }
 
 
