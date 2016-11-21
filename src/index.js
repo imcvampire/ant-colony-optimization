@@ -28,7 +28,43 @@ function setNodes(numberOfNodes) {
 	pheromonesGraph.setNodes(tsp.nodes);
 }
 
+function addRoute(id, route, length) {
+	let dRoute = typeof(route) == "Array" ? [...route] : route;
+	if (typeof(route) == "Array" && dRoute.length > 24) {
+		dRoute = dRoute.slice(0, 24);
+		dRoute.push('...');
+	}
+	let row = $('<tr></tr>', {
+		class: 'row',
+		html: `
+			<th class="mdl-data-table__cell--non-numeric">${id}</th>
+			<th class="mdl-data-table__cell--non-numeric">${dRoute}</th>
+			<th>${length}</th>`
+	}).click(() => {
+		if (typeof(route) == "Array") {
+			graph.setRoute(route);
+		}
+		// window.location.href = "#display";
+	});
 
+	$("#routeTable").append(row);
+}
+
+function clearTable() {
+	$("#routeTable").empty();
+}
+
+function stop() {
+	clearInterval(iterations);
+}
+
+function refresh() {
+	stop();
+	clearTable();
+	graph.clear();
+	pheromonesGraph.clear();
+	setNodes($("#numberOfNodes").val() || 20);
+}
 
 function start() {
 	stop();
@@ -52,17 +88,25 @@ function start() {
 			pheromonesGraph.setWeights(colony.pheromones);
 
 			let i = 0;
+			addRoute('aco', 'following', 0);
 			iterations = setInterval(() => {
 				++i;
 
 				let found = (route, length) => {
 					graph.setRoute(route);
-					console.log(i, length);
+					addRoute(i, route, length);
+					if (i == maxIteration) {
+						addRoute('aco', 'finish', length);
+					}
 				}
 				colony.setNotify(found);
 
 				colony.iterate();
 				pheromonesGraph.setWeights(colony.pheromones);
+
+				if (i == maxIteration) {
+					stop();
+				}
 			}, duration);
 
 			break;
@@ -71,7 +115,7 @@ function start() {
 		case "NN": {
 			let route = nearestNeighboorAlgo(tsp.distances);
 			graph.setRoute(route);
-			console.log('nn', lengthOfRoute(route, tsp.distances));
+			addRoute('nn', route, lengthOfRoute(route, tsp.distances));
 			pheromonesGraph.setWeights();
 			break;
 		}
@@ -80,17 +124,6 @@ function start() {
 			break;
 		}
 	}
-}
-
-function stop() {
-	clearInterval(iterations);
-}
-
-function refresh() {
-	stop();
-	graph.clear();
-	pheromonesGraph.clear();
-	setNodes($("#numberOfNodes").val() || 20);
 }
 
 $("#start").click(() => {
@@ -103,3 +136,4 @@ $("#refresh").click(refresh);
 $("input[name='demo']").change(() => {
 	demo = $("input[name='demo']:checked").val();
 });
+$("#clear").click(clearTable);

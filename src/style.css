@@ -93,3 +93,7 @@ line.weight {
 .margin-bottom {
 	margin-bottom: 12px;
 }
+
+.row {
+	cursor: pointer;
+}
