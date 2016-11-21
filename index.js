@@ -1,6 +1,8 @@
 let os = require('os'),
 	exec = require('child_process').exec;
 
+const opn = require('opn')
+
 function executeCommand(command) {
 	exec(command, (err, stdin, stdout) => {
 		if (err) {
@@ -54,3 +56,5 @@ if (process.argv.find(arg => arg.toLowerCase() == '--server')) {
 		}
 	}
 }
+
+opn('http://localhost:5000')
