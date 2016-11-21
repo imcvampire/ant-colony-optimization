@@ -56,7 +56,6 @@ Folder structure
 
   + \stuff
     - math.js
-    - promise.js
     - route.js
     
   - index.html
@@ -64,8 +63,9 @@ Folder structure
   - style.css
 
 - package.json
-- README.md
+- index.js
 - express.js
 - webpack.config.js 
+- README.md
 ...
 ```

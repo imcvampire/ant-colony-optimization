@@ -31,6 +31,7 @@ function setNodes(numberOfNodes) {
 
 
 function start() {
+	stop();
 	switch (demo) {
 		case "ACO": {
 			let options = {
