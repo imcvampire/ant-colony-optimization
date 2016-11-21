@@ -17,6 +17,10 @@ let tsp = new TSP(20, {width: 470, height: 470});
 let demo = "ACO";
 let stop = false;
 
+graph.setNodes(tsp.nodes);
+pheromonesGraph.setNodes(tsp.nodes);
+
+
 function setNodes(numberOfNodes) {
 	tsp.generateRandomNodes(numberOfNodes);
 	graph.setNodes(tsp.nodes);
@@ -33,16 +37,16 @@ function start() {
 	switch (demo) {
 		case "ACO": {
 			let options = {
-				pher: 1,
-				numberOfAnts: 20,
-				rho: 0.1,
-				alpha: 1,
-				beta: 1,
-				Q: 100,
+				pher: +$("#pher").val() || 1,
+				numberOfAnts: +$("#numberOfAnts").val() || 20,
+				rho: +$("#rho").val() || 0.1,
+				alpha: +$("#alpha").val() || 1,
+				beta: +$("#beta") || 1,
+				Q: +$("#Q").val || 100,
 			};
 
-			let maxIteration = 200,
-				duration = 100;
+			let maxIteration = +$("#maxIteration").val() || 200,
+				duration = +$("#duration").val() || 100;
 
 			let colony = new Colony(tsp.distances, options);
 
@@ -67,10 +71,6 @@ function start() {
 				}).then(delay(duration));
 			}
 
-			iterations.then(() => {
-				console.log('done');
-			})
-
 			break;
 		}
 
@@ -90,11 +90,17 @@ function start() {
 
 function refresh() {
 	stop = true;
+	graph.clear();
+	pheromonesGraph.clear();
+	setNodes($("#numberOfNodes").val() || 20);
 }
 
+$("#start").click(() => {
+	pass().then(delay(+$("#duration").val() || 100))
+		.then(start);
+});
 
-setNodes(20);
-select("NN");
-start();
-select("ACO");
-start();
+$("#refresh").click(refresh);
+$("input[name='demo']").change(() => {
+	demo = $("input[name='demo']:checked").val();
+});

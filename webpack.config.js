@@ -13,7 +13,7 @@ function option(argument) {
 
 
 let entry = {
-  'app': ['./src/index.js', './src/index.html'],
+  'app': ['./src/index.js', './src/index.html', './src/cac_champagne.ttf'],
   'vendor': ['d3', 'jquery', 'material-design-lite']
 }
 
@@ -33,7 +33,7 @@ module.exports = {
       path.resolve('./src')
     ],
 
-    extensions: ['', '.js', '.json', '.css', '.html']
+    extensions: ['', '.js', '.json', '.css', '.html', '.ttf']
   },
 
   devtool: 'source-map',
@@ -52,6 +52,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        loader: 'file-loader?name=[name].[ext]'
+      },
+      {
+        test: /\.ttf$/,
         loader: 'file-loader?name=[name].[ext]'
       }
     ]

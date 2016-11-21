@@ -12,7 +12,7 @@ export class Graph {
 
 		this.lineElements = d3.select(selector)
 			.append("g")
-			.classed("lines", true);
+			.classed("paths", true);
 
 		this.nodeElements = d3.select(selector)
 			.append("g")
@@ -77,10 +77,16 @@ export class Graph {
 		this.lineElements.selectAll("line")
 			.data(lines).enter()
 			.append("line")
-			.classed("line", true)
+			.classed("path", true)
 			.attr("x1", data => data.from.x)
 			.attr("y1", data => data.from.y)
 			.attr("x2", data => data.to.x)
 			.attr("y2", data => data.to.y);
+	}
+
+	clear() {
+		this.nodeElements.selectAll("circle").remove();
+		this.lineElements.selectAll("line").remove();
+		this.weightElements.selectAll("line").remove();
 	}
 }
