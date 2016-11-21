@@ -12,17 +12,17 @@ function executeCommand(command) {
 if (process.argv.find(arg => arg.toLowerCase() == '--server')) {
 	switch (os.type().toUpperCase()) {
 		case "WINDOWS_NT": {
-			executeCommand('start http://localhost:5000 && node express.js');
+			executeCommand('node express.js');
 			break;
 		}
 
 		case "LINUX": {
-			executeCommand('curl "http://localhost:5000" && node express.js');
+			executeCommand('node express.js');
 			break;
 		}
 
 		case "DARWIN": {
-			executeCommand('open "http://localhost:5000" && node express.js');
+			executeCommand('node express.js');
 			break;
 		}
 

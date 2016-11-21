@@ -77,7 +77,7 @@ export default () => {
   $(runBtn).on('click', () => getConfig())
 
   $(algorithmDropdown).on('change', ({ target }) => {
-    if (target.val() === algorithm.aco) {
+    if (target.value === algorithm.aco) {
       enableAcoConfig()
     } else {
       disableAcoConfig()

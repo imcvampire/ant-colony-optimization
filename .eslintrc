@@ -19,5 +19,5 @@
   "rules": {
     "semi": [2, "never"],
     "no-param-reassign": 0
-  },
+  }
 }

@@ -10,25 +10,36 @@
 </head>
 
 <body>
+  <form id="form-input">
+    Number:
+    <input type="number" id="node-number">
+    <br>
+
+    Algorithm:
+    <select name="algorithm" id="algorithm">
+      <option value="nn">Nearest Neighboor</option>
+      <option value="aco">ACO</option>
+      <option value="opt">2-OPT Complete</option>
+    </select>
+    <br>
+
+    Alpha:
+    <input type="number" id="alpha">
+    Beta:
+    <input type="number" id="beta">
+    Rho:
+    <input type="number" id="rho">
+    Pher:
+    <input type="number" id="pher">
+    Q:
+    <input type="number" id="q">
+
+    <button id="refresh">Refresh</button>
+    <button id="run">Run</button>
+  </form>
+
   <div class="container">
-    <form id="form-input">
-      <input type="number" id="node-number">
 
-      <select name="algorithm" id="algorithm">
-        <option value="nn">Nearest Neighboor</option>
-        <option value="aco">ACO</option>
-        <option value="opt">2-OPT Complete</option>
-      </select>
-
-      <input type="number" id="alpha">
-      <input type="number" id="beta">
-      <input type="number" id="rho">
-      <input type="number" id="pher">
-      <input type="number" id="q">
-
-      <button id="refresh">Refresh</button>
-      <button id="run">Run</button>
-    </form>
 
     <svg id="graph" class="frame" height="500" width="500">
 

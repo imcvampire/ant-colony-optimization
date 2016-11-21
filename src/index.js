@@ -1,3 +1,7 @@
+import $ from 'jquery'
+
+import init from 'dashboard/form'
+
 import { acoDemo } from 'demo/aco';
 import { nnDemo } from 'demo/nn';
 import { TSP } from 'problem/tsp';
@@ -33,3 +37,7 @@ acoDemo(tsp, logger, {
 .then(() => {
 	nnDemo(tsp, logger);
 });
+
+$(() => {
+  init()
+})
