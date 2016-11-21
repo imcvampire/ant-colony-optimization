@@ -68,16 +68,19 @@ const setDefaultConfig = () => {
   disableAcoConfigInput(true)
 }
 
-$(algorithmDropdown).on('change', ({ target }) => {
-  if (target.val() === algorithm.aco) {
-    enableAcoConfig()
-  } else {
-    disableAcoConfig()
-  }
-})
+
 
 export default () => {
   setDefaultConfig()
+
   $(refreshBtn).on('click', () => setDefaultConfig())
   $(runBtn).on('click', () => getConfig())
+
+  $(algorithmDropdown).on('change', ({ target }) => {
+    if (target.val() === algorithm.aco) {
+      enableAcoConfig()
+    } else {
+      disableAcoConfig()
+    }
+  })
 }
