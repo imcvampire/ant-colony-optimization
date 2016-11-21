@@ -17,8 +17,8 @@ Build Project
 npm run build
 ```
 
-Run
----
+Run Demo
+--------
 
 ```
 npm start

@@ -28,9 +28,6 @@ function setNodes(numberOfNodes) {
 }
 
 
-function select(name = "ACO") {
-	demo = name;
-}
 
 function start() {
 	stop = false;
