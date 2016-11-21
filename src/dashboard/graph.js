@@ -31,6 +31,10 @@ export class Graph {
 	}
 
 	setWeights(weights) {
+		if (weights == undefined || weights == null || weights == []) {
+			return;
+		}
+
 		let lines = [];
 		for (let i = 0; i < this.nodes.length; ++i) {
 			for (let j = 0; j < this.nodes.length; ++j) {
@@ -39,7 +43,7 @@ export class Graph {
 		}
 
 		weights = weights.map(v => {
-			return v.map(weight => Math.atan(1 - 1 / (Math.pow(weight / 400, 1.1)  + 1)) );
+			return v.map(weight => Math.atan(1 - 1 / (Math.pow(weight / 10, 3)  + 1)) );
 		})
 
 		this.weightElements.selectAll("line").remove();
@@ -47,8 +51,8 @@ export class Graph {
 			.data(lines).enter()
 			.append("line")
 			.classed("weight", true)
-			.attr("stroke", (data) => {
-				return `rgba(125, 125, 125, ${weights[data.from][data.to] * 255})`;
+			.attr("stroke-opacity", (data) => {
+				return `${weights[data.from][data.to] * 255}`;
 			})
 			.attr("x1", data => this.nodes[data.from].x)
 			.attr("y1", data => this.nodes[data.from].y)

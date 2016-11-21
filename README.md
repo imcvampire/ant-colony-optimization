@@ -42,27 +42,26 @@ Folder structure
     - slides.md
     
 + \src
-  + \aco
+  + \algo
     - ant.js
     - colony.js
-  + \demo
-    - aco.js
     - nn.js
-  + \nn
-    - nn.js
+    - opt.js
+
+  + \dashboard
+    - graph.js
+    
   + \problem
     - tsp.js
-  + \opt
-    - opt.js
+
   + \stuff
     - math.js
     - promise.js
     - route.js
-  + \dashboard
-    - graph.js
-  - helpers.js
+    
   - index.html
   - index.js
+  - style.css
 
 - package.json
 - README.md
