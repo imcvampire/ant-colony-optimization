@@ -2,6 +2,11 @@ body {
 
 }
 
+.title {
+	font-family: CAC Champagne;
+	font-size: 30px;
+}
+
 .container {
 	display: flex;
 	justify-content: center;
@@ -23,6 +28,10 @@ circle.node {
 	r: 4;
 }
 
+.frame:hover circle.node {
+	r: 8;
+}
+
 circle.node:hover {
 	fill: red;
 }
@@ -33,5 +42,6 @@ line.line {
 }
 
 line.weight {
+	stroke: gray;
 	stroke-width: 3px;
 }

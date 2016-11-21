@@ -34,7 +34,7 @@ export function twoOptComplete(route, distances)
 			{
 				if (distances[i - 1][i] + distances[j - 1][j] < distances[i - 1][j] + distances[j - 1][i])
 				{
-					route = twoOptSwap(route, start, end);
+					route = twoOptSwap(route, i, j);
 					noImprovement = false;
 				}
 			}
