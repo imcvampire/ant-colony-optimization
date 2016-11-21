@@ -29,8 +29,8 @@ function setNodes(numberOfNodes) {
 }
 
 function addRoute(id, route, length) {
-	let dRoute = typeof(route) == "Array" ? [...route] : route;
-	if (typeof(route) == "Array" && dRoute.length > 24) {
+	let dRoute = route instanceof Array ? [...route] : route;
+	if (route instanceof Array && dRoute.length > 24) {
 		dRoute = dRoute.slice(0, 24);
 		dRoute.push('...');
 	}
@@ -41,7 +41,7 @@ function addRoute(id, route, length) {
 			<th class="mdl-data-table__cell--non-numeric">${dRoute}</th>
 			<th>${length}</th>`
 	}).click(() => {
-		if (typeof(route) == "Array") {
+		if (route instanceof Array) {
 			graph.setRoute(route);
 		}
 		// window.location.href = "#display";
