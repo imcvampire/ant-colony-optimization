@@ -13,5 +13,5 @@ if (process.argv.find(arg => arg.toLowerCase() == '--server')) {
 	executeCommand("node ./express.js");
 	open("http://localhost:5000");
 } else {
-	executeCommand("node ./dist/index.html");
+	open("./dist/index.html");
 }
