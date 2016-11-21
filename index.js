@@ -14,7 +14,7 @@ function executeCommand(command) {
 if (process.argv.find(arg => arg.toLowerCase() == '--server')) {
 	switch (os.type().toUpperCase()) {
 		case "WINDOWS_NT": {
-			executeCommand('node express.js');
+			executeCommand('start http://localhost:5000 && node express.js');
 			break;
 		}
 
@@ -24,7 +24,7 @@ if (process.argv.find(arg => arg.toLowerCase() == '--server')) {
 		}
 
 		case "DARWIN": {
-			executeCommand('node express.js');
+			executeCommand('open http://localhost:5000 && node express.js');
 			break;
 		}
 

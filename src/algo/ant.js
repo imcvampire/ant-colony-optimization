@@ -1,7 +1,7 @@
 import { randomIndexFrom, range, sumOf } from 'stuff/math';
 import { lengthOfRoute } from 'stuff/route';
 
-import { twoOptComplete } from 'opt/opt';
+import { twoOptComplete } from 'algo/opt';
 
 export class Ant {
 	constructor({alpha = 1, beta = 1, Q = 1}) {
@@ -12,7 +12,7 @@ export class Ant {
 		this.base = 0;
 
 		this.route = [];
-		this.routeLength;
+		this.routeLength = Number.MAX_VALUE;
 	}
 
 	/**
@@ -81,12 +81,28 @@ export class Ant {
 	layPheromones(distances, pheromones) {
 		let numberOfNodes = distances.length;
 
+		let max = 0;
+
 		for (let i = 0; i < numberOfNodes; ++i) {
 			let currentNode = this.route[i],
-				nextNode = this.route[i + 1];
+				nextNode = this.route[i + 1],
+				distance = distances[currentNode][nextNode];
+			
+			if (distance < 0.1) {
+				distance = 0.1;
+			}
 
-			pheromones[currentNode][nextNode] += 1 / distances[currentNode][nextNode];
-			pheromones[nextNode][currentNode] += pheromones[currentNode][nextNode];
+			pheromones[currentNode][nextNode] += this.Q / this.routeLength;
+
+			if (pheromones[currentNode][nextNode] < 0.1) {
+				pheromones[currentNode][nextNode] = 0.1;
+			}
+
+			if (max < pheromones[currentNode][nextNode]) {
+				max = pheromones[currentNode][nextNode];
+			}
+
+			pheromones[nextNode][currentNode] = pheromones[currentNode][nextNode];
 		}
 	}
 }
