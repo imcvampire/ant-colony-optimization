@@ -15,7 +15,8 @@ let graph = new Graph('#graph'),
 
 let tsp = new TSP(20, {width: 470, height: 470});
 let demo = "ACO";
-let stop = false;
+
+let iterations = null;
 
 graph.setNodes(tsp.nodes);
 pheromonesGraph.setNodes(tsp.nodes);
@@ -30,7 +31,6 @@ function setNodes(numberOfNodes) {
 
 
 function start() {
-	stop = false;
 	switch (demo) {
 		case "ACO": {
 			let options = {
@@ -50,23 +50,19 @@ function start() {
 
 			pheromonesGraph.setWeights(colony.pheromones);
 
-			let iterations = pass();
-			for (let i = 0; i < maxIteration; ++i) {
-				iterations = iterations.then(() => {
-					if (stop) {
-						return;
-					}
+			let i = 0;
+			iterations = setInterval(() => {
+				++i;
 
-					let found = (route, length) => {
-						graph.setRoute(route);
-						console.log(i, length);
-					}
-					colony.setNotify(found);
+				let found = (route, length) => {
+					graph.setRoute(route);
+					console.log(i, length);
+				}
+				colony.setNotify(found);
 
-					colony.iterate();
-					pheromonesGraph.setWeights(colony.pheromones);
-				}).then(delay(duration));
-			}
+				colony.iterate();
+				pheromonesGraph.setWeights(colony.pheromones);
+			}, duration);
 
 			break;
 		}
@@ -85,8 +81,12 @@ function start() {
 	}
 }
 
+function stop() {
+	clearInterval(iterations);
+}
+
 function refresh() {
-	stop = true;
+	stop();
 	graph.clear();
 	pheromonesGraph.clear();
 	setNodes($("#numberOfNodes").val() || 20);
@@ -97,6 +97,7 @@ $("#start").click(() => {
 		.then(start);
 });
 
+$("#stop").click(stop);
 $("#refresh").click(refresh);
 $("input[name='demo']").change(() => {
 	demo = $("input[name='demo']:checked").val();

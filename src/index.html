@@ -79,10 +79,13 @@
           </div>
           <div>
             <button id="refresh" class="mdl-button mdl-js-button mdl-button--primary">
-              Refresh
+              REFRESH
+            </button>
+            <button id="stop" class="mdl-button mdl-js-button mdl-button--primary">
+              STOP
             </button>
             <button id="start" class="mdl-button mdl-js-button mdl-button--primary">
-              Start
+              START
             </button>
           </div>
         </form>
@@ -103,18 +106,26 @@
   </div>
 
   <div class="container center-content">
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-      <thead>
-        <tr>
-          <th class="mdl-data-table__cell--non-numeric">Id</th>
-          <th class="mdl-data-table__cell--non-numeric">Route</th>
-          <th>Length</th>
-        </tr>
-      </thead>
-      <tbody id="routeTable">
-        
-      </tbody>
-    </table>
+    <button id="clear" class="mdl-button mdl-js-button mdl-button--primary short">
+      CLEAR TABLE
+    </button>
+  </div>
+
+  <div class="container center-content">
+    <div class="short">
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Id</th>
+            <th class="mdl-data-table__cell--non-numeric">Route</th>
+            <th>Length</th>
+          </tr>
+        </thead>
+        <tbody id="routeTable">
+          
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <script src="./app.js"></script>

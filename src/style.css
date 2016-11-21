@@ -35,6 +35,10 @@ body {
 	justify-content: center;
 }
 
+.container.align-content-right {
+	justify-content: flex-end;
+}
+
 .container.space-around {
 	justify-content: space-around;
 }
