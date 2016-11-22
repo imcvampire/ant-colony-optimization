@@ -15,7 +15,7 @@ export function pass(...arg)
  * 
  * E.g.
  * ```
- * emit('ok').then(delay(duration)).then(console.log);
+ * pass('ok').then(delay(duration)).then(console.log);
  * ```
  * 
  * @param {number} duration millisecond

@@ -17,8 +17,8 @@ Build Project
 npm run build
 ```
 
-Run
----
+Run Demo
+--------
 
 ```
 npm start
@@ -35,38 +35,37 @@ Folder structure
 ----------------
 
 ```file-system
-+ \dist 
-+ \report
-  + \src
++ dist 
++ report
+  + src
     - report.md
     - slides.md
     
-+ \src
-  + \aco
++ src
+  + algo
     - ant.js
     - colony.js
-  + \demo
-    - aco.js
     - nn.js
-  + \nn
-    - nn.js
-  + \problem
-    - tsp.js
-  + \opt
     - opt.js
-  + \stuff
-    - math.js
-    - promise.js
-    - route.js
-  + \dashboard
+
+  + dashboard
     - graph.js
-  - helpers.js
+    
+  + problem
+    - tsp.js
+
+  + stuff
+    - math.js
+    - route.js
+    
   - index.html
   - index.js
+  - style.css
 
 - package.json
-- README.md
+- index.js
 - express.js
 - webpack.config.js 
+- README.md
 ...
 ```

@@ -1,7 +1,5 @@
-let os = require('os'),
-	exec = require('child_process').exec;
-
-const opn = require('opn')
+let exec = require('child_process').exec,
+	open = require('opn')
 
 function executeCommand(command) {
 	exec(command, (err, stdin, stdout) => {
@@ -12,49 +10,8 @@ function executeCommand(command) {
 }
 
 if (process.argv.find(arg => arg.toLowerCase() == '--server')) {
-	switch (os.type().toUpperCase()) {
-		case "WINDOWS_NT": {
-			executeCommand('node express.js');
-			break;
-		}
-
-		case "LINUX": {
-			executeCommand('node express.js');
-			break;
-		}
-
-		case "DARWIN": {
-			executeCommand('node express.js');
-			break;
-		}
-
-		default: {
-			console.log("Command line interface does not support this command!");
-			break;
-		}
-	}
+	executeCommand("node ./express.js");
+	open("http://localhost:5000");
 } else {
-	switch (os.type().toUpperCase()) {
-		case "WINDOWS_NT": {
-			executeCommand('start .\\dist\\index.html');
-			break;
-		}
-
-		case "LINUX": {
-			executeCommand('sensible-browser ./dist/index.html');
-			break;
-		}
-
-		case "DARWIN": {
-			executeCommand('open ./dist/index.html');
-			break;
-		}
-
-		default: {
-			console.log("Command line interface does not support this command!");
-			break;
-		}
-	}
+	open("./dist/index.html");
 }
-
-opn('http://localhost:5000')

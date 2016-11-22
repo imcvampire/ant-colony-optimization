@@ -21,7 +21,8 @@ export class Colony {
 
 		this.setPopulation(numberOfAnts);
 
-		this.shortestRouteLength = Number.MAX_VALUE;
+		this.bestRouteLength = Number.MAX_VALUE;
+		this.bestRoute = [];
 	}
 
 	initializePheromones() {
@@ -61,9 +62,10 @@ export class Colony {
 	 */
 	indentifyBestPath() {
 		this.ants.forEach(ant => {
-			if (this.shortestRouteLength > ant.routeLength) {
-				this.shortestRouteLength = ant.routeLength;
+			if (this.bestRouteLength > ant.routeLength) {
+				this.bestRouteLength = ant.routeLength;
 				this.notify(ant.route, ant.routeLength);
+				this.bestRoute = ant.route;
 			}
 		})
 	}
@@ -84,9 +86,9 @@ export class Colony {
 	}
 
 	/**
-	 * Notify better route
+	 * Notify when better route found
 	 */
-	notify() {
+	notify(route, length) {
 
 	}
 
