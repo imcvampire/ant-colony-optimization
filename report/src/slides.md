@@ -505,7 +505,7 @@ Sourcecode:
 
 - [aco-metaheuristic]
 
-[aco-metaheuristic]: http://www.aco-metaheuristic.org/index.html
+[aco-metaheuristic]: www.aco-metaheuristic.org/aco-code/
 
 - [aco-js]
 
