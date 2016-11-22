@@ -464,6 +464,50 @@ Demo
 
 ---
 
+Reference
+---------
+
+Research Gate:
+
+- [High-level pseudo-code for the ACO algorithm]
+
+[High-level pseudo-code for the ACO algorithm]: https://www.researchgate.net/figure/5842413_fig2_Figure-3-High-level-pseudo-code-for-the-ACO-algorithm
+
+- [Using Ant Colony Optimization (ACO) on Kinetic Modeling of the Acetoin Production in Lactococcus Lactis C7]
+
+[Using Ant Colony Optimization (ACO) on Kinetic Modeling of the Acetoin Production in Lactococcus Lactis C7]: https://www.researchgate.net/figure/237013254_fig1_Fig-1-Pyruvate-metabolisms-in-lactococcus-lactis-C7-Marcel-et-al-2002
+
+Wiki:
+
+- [Ant]
+
+[Ant]: https://en.wikipedia.org/wiki/Ant
+
+- [Travelling salesman problem]
+
+[Travelling salesman problem]: https://en.wikipedia.org/wiki/Travelling_salesman_problem
+
+- [Ant colony optimization algorithms]
+
+[Ant colony optimization algorithms]: https://en.wikipedia.org/wiki/Ant_colony_optimization_algorithms
+
+---
+
+Reference
+---------
+
+Sourcecode:
+
+- [aco-metaheuristic]
+
+[aco-metaheuristic]: http://www.aco-metaheuristic.org/index.html
+
+- [aco-js]
+
+[aco-js]: https://github.com/GordyD/js-aco
+
+---
+
 <!--
 template: gaia
 -->
