@@ -417,7 +417,50 @@ Application
 
 - Ứng dụng vào các bài toán tìm kiếm
 
-- Tic-tac-toe
+  + Tìm kiếm trên bản đồ
+  + Bài toán vận tải, mạng thông tin
+
+- Ứng dụng trong các chương trình đồ họa
+
+  + Strategy game
+  + Mô phỏng lại tập tính bầy đàn trong tự nhiên
+
+---
+
+Demo
+----
+
+Ứng dụng mô phỏng ACO và NN trên bài toán TSP
+
+- Các input là các giá trị cài đặt cho thuật toán. Nếu không nhập các giá trị này sẽ ở giá trị mặc định:
+
+	+ Số đỉnh: 20
+	+ Số con kiến: 20
+	+ Alpha: 1, Beta: 1
+	+ Rho: 0.1
+	+ Q: 100
+
+	+ maxIteration: 200
+	+ duration: 100
+
+---
+
+Demo
+----
+
+- Ô bên trái hiển thị tuyến đường
+- Ô ở giữa hiển thị giá trị pheromone trên các tuyến đường
+- Ô bên phải là bảng các tuyến đường và chi phí tương ứng
+  
+  + Có thể kích vào dòng bất kì để hiển thị lại tuyến đường của dòng đó
+
+- Có các nút
+
+  + Refresh: Khởi tạo lại sử dụng khi số đỉnh thay đổi
+  + Stop: Dừng lại sử dụng khi thuật toán ACO chạy quá lâu
+  + Start: Để bắt đầu thực hiện Demo
+
+  + Clear Table: Xóa bảng lưu trữ tuyến đường khi bảng quá dài và chứa nhiều dữ liệu cũ
 
 ---
 
