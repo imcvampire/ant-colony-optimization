@@ -29,6 +29,7 @@ body {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-start;
+	align-items: flex-start;
 }
 
 .container.center-content {
@@ -80,8 +81,16 @@ circle.node:hover {
 	fill: red;
 }
 
+circle.nest {
+	r: 10;
+}
+
+.frame:hover circle.nest {
+	r: 14;
+}
+
 line.path {
-	stroke: tomato;
+	stroke: dodgerblue;
 	stroke-width: 3px;
 }
 
@@ -96,4 +105,13 @@ line.weight {
 
 .row {
 	cursor: pointer;
+}
+
+.scroll {
+	height: 500px;
+	overflow-y: auto;
+}
+
+.right {
+	float: right;
 }

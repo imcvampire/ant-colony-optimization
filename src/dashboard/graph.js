@@ -26,6 +26,9 @@ export class Graph {
 			.data(nodes).enter()
 			.append("circle")
 			.classed("node", true)
+			.classed("nest", (value, id) => {
+				return id == 0 ? true : false;
+			})
 			.attr("cx", (data) => data.x)
 			.attr("cy", (data) => data.y);
 	}

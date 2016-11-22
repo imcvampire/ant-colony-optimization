@@ -3,6 +3,7 @@ import $ from 'jquery'
 
 import { lengthOfRoute } from 'stuff/route';
 import { pass, delay } from 'stuff/promise';
+import { round10 } from 'stuff/math';
 
 import { Colony } from 'algo/colony';
 import { nearestNeighboorAlgo } from 'algo/nn';
@@ -14,7 +15,6 @@ let graph = new Graph('#graph'),
 	pheromonesGraph = new Graph('#pheromones');
 
 let tsp = new TSP(20, {width: 470, height: 470});
-let demo = "ACO";
 
 let iterations = null;
 
@@ -39,7 +39,7 @@ function addRoute(id, route, length) {
 		html: `
 			<th class="mdl-data-table__cell--non-numeric">${id}</th>
 			<th class="mdl-data-table__cell--non-numeric">${dRoute}</th>
-			<th>${length}</th>`
+			<th>${round10(length, 2)}</th>`
 	}).click(() => {
 		if (route instanceof Array) {
 			graph.setRoute(route);
@@ -68,6 +68,7 @@ function refresh() {
 
 function start() {
 	stop();
+	let demo = $("input[name='demo']:checked").val();
 	switch (demo) {
 		case "ACO": {
 			let options = {
@@ -95,9 +96,6 @@ function start() {
 				let found = (route, length) => {
 					graph.setRoute(route);
 					addRoute(i, route, length);
-					if (i == maxIteration) {
-						addRoute('aco', 'finish', length);
-					}
 				}
 				colony.setNotify(found);
 
@@ -106,6 +104,7 @@ function start() {
 
 				if (i == maxIteration) {
 					stop();
+					addRoute('aco', 'finish', colony.bestRouteLength);
 				}
 			}, duration);
 
@@ -133,7 +132,4 @@ $("#start").click(() => {
 
 $("#stop").click(stop);
 $("#refresh").click(refresh);
-$("input[name='demo']").change(() => {
-	demo = $("input[name='demo']:checked").val();
-});
 $("#clear").click(clearTable);

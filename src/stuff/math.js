@@ -38,3 +38,17 @@ export function randomIndexFrom(probs)
 
 	return randId;
 }
+
+/**
+ * Decimal rounding
+ * 
+ * @param {number} number
+ * @param {number} precision
+ * @param The adjusted value
+ */
+export function round10(number, precision) {
+	let factor = 10 ** precision;
+	let temp = number * factor;
+	temp = Math.round(temp);
+	return temp / factor;
+}

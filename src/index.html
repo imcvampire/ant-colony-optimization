@@ -87,33 +87,28 @@
             <button id="start" class="mdl-button mdl-js-button mdl-button--primary">
               START
             </button>
+            <button id="clear" class="mdl-button mdl-js-button mdl-button--primary short right">
+              CLEAR TABLE
+            </button>
           </div>
         </form>
   </div>
 
   <div class="container center-content" id="display">
 
-    <div class="card center-content short">
+    <div class="card short">
       <svg id="graph" class="frame" height="500" width="500">
 
       </svg>
     </div>
-    <div class="card center-content short">
+    <div class="card short">
       <svg id="pheromones" class="frame" height="500" width="500">
 
       </svg>
     </div>
-  </div>
 
-  <div class="container center-content">
-    <button id="clear" class="mdl-button mdl-js-button mdl-button--primary short">
-      CLEAR TABLE
-    </button>
-  </div>
-
-  <div class="container center-content">
-    <div class="short">
-      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <div class="card scroll short">
+      <table class="mdl-data-table mdl-js-data-table">
         <thead>
           <tr>
             <th class="mdl-data-table__cell--non-numeric">Id</th>
