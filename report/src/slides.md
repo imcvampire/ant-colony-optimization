@@ -432,7 +432,7 @@ Demo
 
 Ứng dụng mô phỏng ACO và NN trên bài toán TSP
 
-- Các input là các giá trị cài đặt cho thuật toán. Nếu không nhập các giá trị này sẽ ở giá trị mặc định:
+Các input là các giá trị cài đặt cho thuật toán. Nếu không nhập các giá trị này sẽ ở giá trị mặc định:
 
 	+ Số đỉnh: 20
 	+ Số con kiến: 20
@@ -454,13 +454,18 @@ Demo
   
   + Có thể kích vào dòng bất kì để hiển thị lại tuyến đường của dòng đó
 
-- Có các nút
+---
 
-  + Refresh: Khởi tạo lại sử dụng khi số đỉnh thay đổi
-  + Stop: Dừng lại sử dụng khi thuật toán ACO chạy quá lâu
-  + Start: Để bắt đầu thực hiện Demo
+Demo
+----
 
-  + Clear Table: Xóa bảng lưu trữ tuyến đường khi bảng quá dài và chứa nhiều dữ liệu cũ
+- Các nút điều khiển:
+
+  + **Refresh**: Khởi tạo lại sử dụng khi số đỉnh thay đổi
+  + **Stop**: Dừng lại sử dụng khi thuật toán ACO chạy quá lâu
+  + **Start**: Để bắt đầu thực hiện Demo
+
+  + **Clear Table**: Xóa bảng lưu trữ tuyến đường khi bảng quá dài và chứa nhiều dữ liệu cũ
 
 ---
 
