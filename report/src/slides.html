@@ -1,0 +1,165 @@
+<!--
+page_number: true
+$theme: gaia
+template: gaia
+$width: 1920
+$height: 1200
+-->
+<h1 id="swarm-intelligence">Swarm Intelligence</h1>
+<p>Giáo viên hướng dẫn: Thân Quang Khoát</p>
+<p>Nhóm số 5:</p>
+<ol>
+<li>
+<p>Nguyễn Quốc Anh<br>
+<code>MSSV: 20140149</code></p>
+</li>
+<li>
+<p>Phùng Đức Nhật<br>
+<code>MSSV: 20143321</code></p>
+</li>
+<li>
+<p>Lưu Minh Hồng
+<code>MSSV: 20169572</code></p>
+</li>
+</ol>
+<hr>
+<!--
+template: default
+-->
+<h2 id="tai-sao-lai-su-dung-mo-hinh-swarm-intelligence">Tại sao lại sử dụng mô hình swarm intelligence?</h2>
+<div style="display: flex; justify-content: center">
+	<img src="symbrion.jpg" alt="Symbrion">
+</div>
+<hr>
+<!--
+- Mô phỏng lại dựa trên mô hình trong tự nhiên
+- Sử dụng mô hình để giải bài toán thực tế
+-->
+<h2 id="mo-phong-lai-dua-tren-mo-hinh-thuc-te-trong-tu-nhien">Mô phỏng lại dựa trên mô hình thực tế trong tự nhiên</h2>
+<div style="display: flex; justify-content: center;">
+	<div style="
+      width:  900px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;">
+    	<img src="boids.png">
+    </div>
+</div>
+<hr>
+<h2 id="su-dung-mo-hinh-de-nang-cao-hieu-nang">Sử dụng mô hình để nâng cao hiệu năng</h2>
+<ul>
+<li>
+<p>Thuật toán Stochastic Diffusion Search</p>
+</li>
+<li>
+<p>Thuật toán Ant Colony Algorithm - <em>ACO</em></p>
+</li>
+</ul>
+<hr>
+<h2 id="thuat-toan-aco">Thuật toán ACO</h2>
+<p>$$
+AS =&gt; ACO =&gt; \left{
+				\begin{array}{ll}
+					Elitist \space Ant \space System\
+\
+					Min-max \space Ant \space System (MMAS)\
+\
+					Ant \space Colony \space System (ACS)\
+\
+					Rank-based \space Ant \space System (ASrank)\
+					\
+Continuous \space orthogonal \space ant\
+colony (COAC)\
+				\end{array}
+			\right.</p>
+<h2 id="">$$</h2>
+<h2 id="mo-hinh-ant-system-as">Mô hình Ant System - <em>AS</em></h2>
+<ul>
+<li>
+<p>Cho một số lượng kiến ngẫu nhiên</p>
+</li>
+<li>
+<p>Nếu tìm thấy thức ăn sẽ đưa thức ăn về tổ</p>
+</li>
+<li>
+<p>Trên đường đưa về tổ sẽ thả chất pheromone để đánh dấu đường đi</p>
+</li>
+<li>
+<p>Lượng pheromone nhả ra phụ thuộc vào thức ăn</p>
+</li>
+</ul>
+<!-- Có thể optimize được quãng đường -->
+<hr>
+<h2 id="mo-hinh-ant-system">Mô hình Ant System</h2>
+<ul>
+<li>
+<p>Những con kiến khác đi qua pheromone sẽ đi theo pheromone</p>
+</li>
+<li>
+<p>Càng nhiều kiến đi theo thì pheromone trên tuyến đường các tăng</p>
+</li>
+<li>
+<p>Lượng pheromone càng nhiều thì càng hấp dẫn các con khác đến</p>
+</li>
+<li>
+<p>Khi lượng thức ăn hết thì pheromone sẽ bay hơi dần</p>
+</li>
+</ul>
+<hr>
+<h2 id="mo-hinh-ant-system-2">Mô hình Ant System</h2>
+<ul>
+<li>
+<p>Không phù hợp với các bài toán thực tế</p>
+</li>
+<li>
+<p>Chi phí cao</p>
+</li>
+<li>
+<p>Khó triển khai</p>
+</li>
+</ul>
+<hr>
+<h2 id="mo-hinh-ant-colony-optimization-aco">Mô hình Ant Colony Optimization - <em>ACO</em></h2>
+<ul>
+<li>
+<p>Được tạo ra với mục đích riêng</p>
+</li>
+<li>
+<p>Giải bài toán Travel Saleman Problem (TSP)</p>
+</li>
+</ul>
+<hr>
+<h2 id="travel-saleman-problem-tsp">Travel Saleman Problem - <em>TSP</em></h2>
+<ul>
+<li>
+<p>Một người đưa pizza phải giao pizza cho tất cả các khách hàng rồi quay trở về hàng ăn sao quãng đường là ngắn nhất</p>
+</li>
+<li>
+<p>Giả sử luôn tồn tại đường đi giữa hai địa chỉ cần giao hàng</p>
+</li>
+</ul>
+<hr>
+<h2 id="thuat-toan">Thuật toán</h2>
+<ul>
+<li>
+<p>Extract Algorithm</p>
+</li>
+<li>
+<p>Nearest Neighboor</p>
+</li>
+<li>
+<p>Christofides' algorithm for the TSP</p>
+</li>
+<li>
+<p>2-OPT Complete</p>
+</li>
+<li>
+<p>Ant Colony Algorithm</p>
+</li>
+</ul>
+<hr>
+<h2 id="nearest-neighboor-nn">Nearest Neighboor - <em>NN</em></h2>
+<ul>
+<li>Tại mỗi điểm chọn ra điểm gần nhất và thăm điểm đó</li>
+</ul>
+<p><img src="nearestneighbor.gif" alt="Nearest Neighboor"></p>
