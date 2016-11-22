@@ -3,6 +3,12 @@ IT4040-AI
 
 A project from class IT4040 in HUST
 
+Requirement
+-----------
+
+- NodeJS v6.9.0 or later
+- NPM v3.10.8 or later
+
 Install Package Dependencies
 ----------------------------
 
