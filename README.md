@@ -35,26 +35,26 @@ Folder structure
 ----------------
 
 ```file-system
-+ \dist 
-+ \report
-  + \src
++ dist 
++ report
+  + src
     - report.md
     - slides.md
     
-+ \src
-  + \algo
++ src
+  + algo
     - ant.js
     - colony.js
     - nn.js
     - opt.js
 
-  + \dashboard
+  + dashboard
     - graph.js
     
-  + \problem
+  + problem
     - tsp.js
 
-  + \stuff
+  + stuff
     - math.js
     - route.js
     
