@@ -58,7 +58,7 @@ export class Ant {
 
 		let calculateWeight = (distance, pheromone) => {
 			distance = distance < 0.1 ? 0.1 : distance;
-			return Math.pow(1 / distance, this.alpha) * Math.pow(pheromone, this.beta);
+			return (1 / distance) ** this.alpha * pheromone ** this.beta;
 		}
 
 		let weights = unvisited.map(node => {
