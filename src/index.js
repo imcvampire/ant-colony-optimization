@@ -121,14 +121,23 @@ function start() {
 		}
 		
 		case "2OPT": {
-			let route = range(tsp.distances.length);
+			let route = [],
+				unvisited = range(tsp.distances.length);
+
+			route.push(unvisited.shift());
+			while (unvisited.length > 0) {
+				let [randomNode] = unvisited.splice(Math.random() * unvisited.length, 1);
+				route.push(randomNode);
+			}
 			route.push(0);
 			graph.setRoute(route);
+			addRoute('rnd', route, lengthOfRoute(route, tsp.distances));
+
 			route = twoOptComplete(route, tsp.distances);
 			setTimeout(() => {
 				graph.setRoute(route);
 				addRoute('2opt', route, lengthOfRoute(route, tsp.distances));
-			}, 1000);
+			}, +$('#duration').val() || 100);
 			break;
 		}
 
