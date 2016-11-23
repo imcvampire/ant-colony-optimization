@@ -1,7 +1,80 @@
 IT4040-AI
 =========
 
-A project from class IT4040 in HUST
+([English below](#Requirement))
+
+Yêu cầu
+-------
+
+- NodeJS v6.9.0 or later
+- NPM v3.10.8 or later
+
+Cài đặt các gói phần mềm cần thiết
+----------------------------------
+
+```bash
+npm i
+```
+
+Biên dịch chương trình
+----------------------
+
+```bash
+npm run build
+```
+
+Chạy chương trình
+-----------------
+
+```
+npm start
+```
+
+hoặc
+
+```
+npm run server
+```
+
+
+Cấu trúc thư mục
+----------------
+
+```file-system
++ dist 
++ report
+  + src
+    - report.md
+    - slides.md
+    
++ src
+  + algo
+    - ant.js
+    - colony.js
+    - nn.js
+    - opt.js
+
+  + dashboard
+    - graph.js
+    
+  + problem
+    - tsp.js
+
+  + stuff
+    - math.js
+    - route.js
+    
+  - index.html
+  - index.js
+  - style.css
+
+- package.json
+- index.js
+- express.js
+- webpack.config.js 
+- README.md
+...
+```
 
 Requirement
 -----------
