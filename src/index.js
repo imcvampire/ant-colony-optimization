@@ -6,7 +6,7 @@ import { pass, delay } from 'stuff/promise';
 import { round10, range } from 'stuff/math';
 
 import { Colony } from 'algo/colony';
-import { nearestNeighboorAlgo } from 'algo/nn';
+import { nearestNeighborAlgo } from 'algo/nn';
 import { twoOptComplete } from 'algo/opt';
 import { TSP } from 'problem/tsp';
 
@@ -113,7 +113,7 @@ function start() {
 		}
 
 		case "NN": {
-			let route = nearestNeighboorAlgo(tsp.distances);
+			let route = nearestNeighborAlgo(tsp.distances);
 			graph.setRoute(route);
 			addRoute('nn', route, lengthOfRoute(route, tsp.distances));
 			pheromonesGraph.setWeights();

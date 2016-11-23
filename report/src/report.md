@@ -1,22 +1,33 @@
-# Chức năng chính của hệ thống:
+Demo
+====
 
-- Chương trình có chức năng chính là mô phỏng và thể hiện kết quả chạy của các thuật toán Ant colony optimization, Nearest neighboor và 2-OPT Complete.
+Giới thiệu
+----------
 
-## Giao diện chính của chương trình:
+Chương trình là demo của thuật toán Ant Colony Optimization (ACO) trên nền bài toán Travelling Salesman Problem (TSP)
 
-![screenshot-main](screenshot-main.png)
+Bên cạnh đó chương trình cũng lấy hai thuật toán là Nearest Neighbor (NN) và 2-OPT Complete để làm tiêu chuẩn so sánh
 
-### Lựa chọn thuật toán:
+Demo được xây dựng dựa trên demo [aco-js] của GordyD
 
-Chương trình cung cấp 3 lựa chọn thuật toán:
+
+Giao diện chính của chương trình
+--------------------------------
+
+![screenshot-main](app.png)
+
+Lựa chọn thuật toán
+-------------------
 
 ![screenshot-algorithm](screenshot-algorithm.png)
 
-### Cài đặt các giá trị cho thuật toán:
+Các giá trị cài đặt cho thuật toán ACO
+--------------------------------------
 
 ![screenshot-options](screenshot-options.png)
 
-- Nếu không nhập các giá trị này, các giá trị cài đặt sẽ được lấy theo mặc định:
+Nếu bị bỏ trống chương trình sẽ chạy với các giá trị mặc định sau
+
 ```
 + Số đỉnh: 20
 + Số con kiến: 20
@@ -24,11 +35,12 @@ Chương trình cung cấp 3 lựa chọn thuật toán:
 + Rho: 0.1
 + Q: 100
 
-+ iteration: 200
-+ duration: 100
++ Iteration: 200
++ Duration: 100
 ```
 
-### Hiển thị kết quả:
+Hiển thị kết quả
+----------------
 
 ![screenshot-table](screenshot-table.png)
 
@@ -39,7 +51,8 @@ Phần hiển thị kết quả gồm có 3 ô với nhiệm vụ của từng k
 
 Ta có thể kích vào dòng bất kì để hiển thị lại tuyến đường của dòng đó.
 
-### Các phím chức năng:
+Các phím chức năng
+------------------
 
 - **Refresh**: Khởi tạo lại sử dụng khi số đỉnh thay đổi
 - **Stop**: Dừng lại sử dụng khi thuật toán ACO chạy quá lâu
@@ -47,11 +60,8 @@ Ta có thể kích vào dòng bất kì để hiển thị lại tuyến đườ
 
 - **Clear Table**: Xóa bảng lưu trữ tuyến đường khi bảng quá dài và chứa nhiều dữ liệu cũ
 
-## Chức năng của chương trình:
-
-Chương trình được dùng để mô phỏng và hiển thị cách các thuật toán trong họ Ant colony khác nhau hoạt động và cho kết quả. Hoạt động và kết quả các các thuật toán có thể dễ dàng được xem trực quan trên giao diện.
-
-# Tài liệu tham khảo:
+Tài liệu tham khảo
+==================
 
 Research Gate:
 

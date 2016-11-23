@@ -17,7 +17,7 @@ function nearestNode(currentNode, unvisited, distances) {
 
 
 /**
- * Best route when start from base node using nearest neighboor strategy
+ * Best route when start from base node using nearest neighbor strategy
  * 
  * @param {number} base
  * @param {number[][]} distances
@@ -46,7 +46,7 @@ function bestRouteFrom(base, distances) {
  * @param {number[][]} distances
  * @return {number[]} shortestRoute
  */
-export function nearestNeighboorAlgo(distances) {
+export function nearestNeighborAlgo(distances) {
 	let numberOfNodes = distances.length;
 
 	let shortestRoute = [];

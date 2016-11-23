@@ -2,8 +2,7 @@
 page_number: true
 $theme: gaia
 template: gaia
-$width: 1920
-$height: 1200
+$size: A4
 -->
 
 Swarm Intelligence
