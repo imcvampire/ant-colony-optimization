@@ -131,7 +131,7 @@ function start() {
 			}
 			route.push(0);
 			graph.setRoute(route);
-			addRoute('rnd', route, lengthOfRoute(route, tsp.distances));
+			addRoute('rand', route, lengthOfRoute(route, tsp.distances));
 
 			route = twoOptComplete(route, tsp.distances);
 			setTimeout(() => {
