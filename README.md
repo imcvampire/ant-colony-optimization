@@ -6,8 +6,8 @@ IT4040-AI
 Yêu cầu
 -------
 
-- NodeJS v6.9.0 or later
-- NPM v3.10.8 or later
+- NodeJS v6.9.0 hoặc mới hơn
+- NPM v3.10.8 hoặc mới hơn
 
 Cài đặt các gói phần mềm cần thiết
 ----------------------------------
