@@ -112,6 +112,15 @@ line.weight {
 	overflow-y: auto;
 }
 
+.scroll::-webkit-scrollbar {
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.scroll::-webkit-scrollbar-thumb {
+	background: rgba(125, 125, 125, 0.3);
+}
+
 .right {
 	float: right;
 }
