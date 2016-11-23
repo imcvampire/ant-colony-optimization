@@ -1,7 +1,7 @@
 IT4040-AI
 =========
 
-([English below](#Requirement))
+([English below](#requirement))
 
 Yêu cầu
 -------
