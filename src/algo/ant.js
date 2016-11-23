@@ -36,7 +36,7 @@ export class Ant {
 		}
 
 		/** Optional */
-		// twoOptComplete(route, distances);
+		// route = twoOptComplete(route, distances);
 
 		route.push(this.base);
 

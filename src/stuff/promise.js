@@ -1,10 +1,8 @@
 /**
  * Pass the arguments for next promise task
  */
-export function pass(...arg)
-{
-	return new Promise(resolve =>
-	{
+export function pass(...arg) {
+	return new Promise(resolve => {
 		resolve(...arg);
 	});
 }
@@ -20,13 +18,10 @@ export function pass(...arg)
  * 
  * @param {number} duration millisecond
  */
-export function delay(duration)
-{
-	return (...arg) =>
-	{
-		return new Promise(resolve =>
-		{
-			setTimeout(() => {resolve(...arg)}, duration);
+export function delay(duration) {
+	return (...arg) => {
+		return new Promise(resolve => {
+			setTimeout(() => { resolve(...arg) }, duration);
 		});
 	}
 }

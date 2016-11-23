@@ -3,10 +3,11 @@ import $ from 'jquery'
 
 import { lengthOfRoute } from 'stuff/route';
 import { pass, delay } from 'stuff/promise';
-import { round10 } from 'stuff/math';
+import { round10, range } from 'stuff/math';
 
 import { Colony } from 'algo/colony';
 import { nearestNeighboorAlgo } from 'algo/nn';
+import { twoOptComplete } from 'algo/opt';
 import { TSP } from 'problem/tsp';
 
 import { Graph } from 'dashboard/graph';
@@ -116,6 +117,18 @@ function start() {
 			graph.setRoute(route);
 			addRoute('nn', route, lengthOfRoute(route, tsp.distances));
 			pheromonesGraph.setWeights();
+			break;
+		}
+		
+		case "2OPT": {
+			let route = range(tsp.distances.length);
+			route.push(0);
+			graph.setRoute(route);
+			route = twoOptComplete(route, tsp.distances);
+			setTimeout(() => {
+				graph.setRoute(route);
+				addRoute('2opt', route, lengthOfRoute(route, tsp.distances));
+			}, 1000);
 			break;
 		}
 
