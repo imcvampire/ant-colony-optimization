@@ -48,7 +48,7 @@ function addRoute(id, route, length) {
 		// window.location.href = "#display";
 	});
 
-	$("#routeTable").append(row);
+	$("#routeTable").prepend(row);
 }
 
 function clearTable() {
@@ -90,7 +90,7 @@ function start() {
 			pheromonesGraph.setWeights(colony.pheromones);
 
 			let i = 0;
-			addRoute('aco', 'following', 0);
+			addRoute('aco', 'following');
 			iterations = setInterval(() => {
 				++i;
 
