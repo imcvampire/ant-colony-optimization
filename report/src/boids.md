@@ -163,7 +163,7 @@ Những khó khăn gặp phải:
 
 Demo sử dụng những phương pháp sau đây
 
-**Xác định vận tốc**
+### Xác định vận tốc
 
 Mỗi tác tử sẽ có hai vector vận tốc một là vector vận tốc mong muốn `targetVelocity` hai là vector vận tốc thực tế `velocity`
 
@@ -181,7 +181,7 @@ Do đó để tính toán vận tốc thực tế chúng ta làm như sau
 
 Việc tính `targetVelocity` được mô tả dưới đây
 
-**Duy trì khoảng cách giữa các tác tử**
+### Duy trì khoảng cách giữa các tác tử
 
 Mỗi tác tử sẽ xác định một bán kính lân cận và một khoảng cách an toàn
 
@@ -191,45 +191,35 @@ Vận tốc duy trì là hàm phụ thuộc vào hiệu giữa `khoảng cách t
 
 Việc cài đặt hàm này thế nào phụ thuộc vào chúng ta. Độ biến thiên càng lớn thì khả năng duy trì khoảng cách an toàn càng cao
 
-**Sắp xếp để cùng hướng với các tác tử xung quanh**
+### Sắp xếp để cùng hướng với các tác tử xung quanh
 
 Vận tốc sắp xếp này thường được tính là bằng vận tốc trung bình của các tác tử xung quanh nó. Tuy nhiên việc này dẫn đến việc vận tốc bị gấp đôi lên theo lũy thừa. Do đó nên vận tốc này thường được nhân với một tỉ lệ phần trăm nào đó
 
-**Tránh chướng ngại vật**
+### Tránh chướng ngại vật
 
 Việc xây dựng khả năng tránh vật cản cho tác tử tương tự như việc chúng ta xây dựng khả năng duy trì khoảng cách cho các tác tử. Khi tác tử nhận thấy nó tới gần chướng ngại vật nào đó. Nó có thể tính toán một vận tốc đẩy cùng phương với đường nối tâm từ vật cản tới tác tử. Độ lớn của vector phụ thuộc vào khoảng cách giữa tác tử và vật cản
 
-**Đuổi theo mục tiêu**
+### Đuổi theo mục tiêu
 
 Vận tốc đuổi theo mục tiêu nên được đặt là vận tốc cố định vào có hướng từ tác tử tới mục tiêu
 
 Vận tốc mong muốn `targetVelocity` sẽ được tính bằng tổng các vận tốc trên cộng lại
 
-Mã nguồn của demo có thể tham khảo tại: [Boids Demo]
+Mã nguồn của demo có thể tham khảo tại: https://github.com/clitetailor/BoidsDemo
 
-[Boids Demo]: https://github.com/clitetailor/BoidsDemo
+Tài liệu tham khảo
+------------------
 
-Reference
----------
-
-Homepage: [red3d]
-
-[red3d]: http://www.red3d.com/cwr/boids/
+Homepage: http://www.red3d.com/cwr/boids/
 
 Wiki:
 
-- [Boids]
-
-[Boids]: https://en.wikipedia.org/wiki/Boids
+- **Boids**: https://en.wikipedia.org/wiki/Boids
 
 Pseudocode:
 
-- [KFish]
-
-[KFish]: http://www.kfish.org/boids/pseudocode.html
+- **KFish**: http://www.kfish.org/boids/pseudocode.html
 
 Source code:
 
-- [Flocking Fish Demo]
-
-[Flocking Fish Demo]: https://www.youtube.com/watch?v=eMpI1eCsIyM
+- **Flocking Fish Demo**: https://www.youtube.com/watch?v=eMpI1eCsIyM

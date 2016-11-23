@@ -77,8 +77,8 @@ function start() {
 				numberOfAnts: +$("#numberOfAnts").val() || 20,
 				rho: +$("#rho").val() || 0.1,
 				alpha: +$("#alpha").val() || 1,
-				beta: +$("#beta") || 1,
-				Q: +$("#Q").val || 100,
+				beta: +$("#beta").val() || 1,
+				Q: +$("#Q").val() || 100,
 			};
 
 			let maxIteration = +$("#maxIteration").val() || 200,

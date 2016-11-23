@@ -31,13 +31,38 @@ template: default
 Tại sao lại sử dụng mô hình swarm intelligence?
 -----------------------------------------------
 
-![Symbrion](symbrion.jpg)
-
----
+![Symbrion](swarm-intro.png)
 
 <!--
 - Mô phỏng lại dựa trên mô hình trong tự nhiên
 - Sử dụng mô hình để giải bài toán thực tế
+-->
+
+---
+
+<!--
+template: gaia
+-->
+
+Swarm Intelligence
+------------------
+
+- Mô hình đa tác tử
+
+- Dựa vào tập tính bầy đàn trong tự nhiên
+
+
+- Ba hướng phát triển chính của Swarm Intelligence:
+
+  + Swarm Robotic
+  + Computer Graphic
+  + Tìm kiếm đồ thị
+
+
+---
+
+<!--
+template: default
 -->
 
 Mô phỏng lại dựa trên mô hình thực tế trong tự nhiên
@@ -51,8 +76,13 @@ Sử dụng mô hình để nâng cao hiệu năng
 -------------------------------------
 
 - Thuật toán Stochastic Diffusion Search
+  (Bishop 1989)
 
 - Thuật toán Ant Colony Algorithm - _ACO_
+  (Dorigo 1992)
+
+- Particle swarm optimization
+  (Kennedy, Eberhart & Shi 1995)
 
 ---
 
@@ -60,22 +90,44 @@ Sử dụng mô hình để nâng cao hiệu năng
 template: gaia
 -->
 
-Thuật toán ACO
+Ant Colony Optimization Algorithms
 --------------
 
+---
+
+<!--
+template: default
+-->
+
+
+Ant Colony Optimization
+-----------------------
+
+- Được Marco Dorigo đề xuất năm 1992
+
+- Áp dụng kĩ thuật trong tính toán xác suất vào bài toán tìm kiếm đồ thị
+
+---
+<!--
+template: gaia
+-->
+
+Ant Colony Optimization
+-----------------------
+
 $$
-AS => ACO => \left\{
+AS \Rightarrow ACO \Rightarrow \left\{
 				\begin{array}{ll}
 					Elitist \space Ant \space System\\
-                    \\
-					Min-max \space Ant \space System (MMAS)\\
+					\\
+                    MMAS\\
                     \\
 					Ant \space Colony \space System (ACS)\\
                     \\
-					Rank-based \space Ant \space System (ASrank)\\
-					\\
+					ASrank\\
+                    \\
                     Continuous \space orthogonal \space ant\\
-                    colony (COAC)\\
+                    colony \space (COAC)\\
 				\end{array}
 			\right.
 $$
@@ -86,21 +138,27 @@ $$
 template: default
 -->
 
-Ant
----
-
-- Không thể nhìn thấy đường
-
-- Giao tiếp thông qua việc chạm vào nhau và thông qua pheromone
-
-- Có tập tính bầy đàn
-
----
-
 Mô hình Ant System - _AS_
 ------------------------
 
-- Cho một số lượng kiến ngẫu nhiên
+Đặc trưng của loài kiến
+
+- Có tập tính bầy đàn
+
+- Giao tiếp hạn chế thông qua va chạm hoặc pheromone
+
+---
+
+Mô hình Ant System
+------------------
+
+Mô tả:
+
+- Cho một tổ kiến cùng với thức ăn ở xung quanh
+
+- Lần lượt gửi kiến đi tìm thức ăn
+
+- Kiến sẽ di chuyển ngẫu nhiên đến khi tìm được thức ăn
 
 - Nếu tìm thấy thức ăn sẽ đưa thức ăn về tổ
 
@@ -129,15 +187,31 @@ Mô hình Ant System
 
 ---
 
+<!--
+template: gaia
+-->
+
+Mô hình Ant System
+-------------------
+
+![Ant Colony](ant-colony.jpg)
+
+---
+
+
+<!--
+template: default
+-->
+
+
 Mô hình Ant System
 ------------------
 
-- Không phù hợp với các bài toán thực tế
-
-- Chi phí cao
 
 - Khó triển khai
 
+- Không phù hợp với các bài toán thực tế
+ 
 ---
 
 Mô hình Ant Colony Optimization - _ACO_
@@ -157,12 +231,19 @@ Mô hình Ant Colony Optimization - _ACO_
 template: gaia
 -->
 
-Travel Saleman Problem - _TSP_
+Travelling Saleman Problem - _TSP_
 ------------------------------
 
 - Một người đưa pizza phải giao pizza cho tất cả các khách hàng rồi quay trở về hàng ăn sao quãng đường là ngắn nhất
 
 - Giả sử luôn tồn tại đường đi giữa hai địa chỉ cần giao hàng
+
+---
+
+Travelling Saleman Problem - _TSP_
+------------------------------
+
+![Pizza](pizza.jpg)
 
 ---
 
@@ -191,7 +272,7 @@ Nearest Neighbor - _NN_
 
 - Tại mỗi điểm chọn ra điểm gần nhất và thăm điểm đó
 
-![Nearest Neighbor](nearestneighbor.gif)
+![Nearest Neighbor](neighbor.jpg)
 
 ---
 
@@ -231,8 +312,21 @@ Pseudo code:
 3. thực hiện lặp một số vòng nhất định
 
 	- giải bài toán
+	
+	- cập nhật tuyến đường chi phí thấp nhất
+    
 	- cập nhật lại pheromone cho mỗi tuyến đường
 ```
+
+---
+
+<!--
+template: default
+-->
+
+Ant Colony Optimization
+-----------------------
+Trọng số của một cạnh:
 
 ---
 
@@ -256,24 +350,41 @@ Ant Colony Optimization
 
 Công thức tính trọng số:
 
-$$ weight_{xy} = pheromones_{xy} * \eta_{xy} $$
+$$ weight_{xy} = \tau_{xy} * \eta_{xy} $$
 
-- $\eta$ : nghịch đảo của khoảng cách giữa hai điểm $\frac{1}{d}$
+- $\tau$ : lượng pheromone
+
+- $\eta$ : nghịch đảo khoảng cách $\frac{1}{d}$
 
 Tổng quát:
 
-$$ weight_{xy} = pheromones_{xy}^\alpha * \eta_{xy}^\beta $$
+$$ weight_{xy} = \tau_{xy}^\alpha * \eta_{xy}^\beta $$
 
 ---
+
+So sánh giữa ACO và NN
+----------------------
+
+- Vòng lặp đầu tiên pheromone sẽ được khởi tạo bằng nhau và bằng 1
+
+- Trọng số là $\frac{1}{d}$ giống với NN
+
+- Trong NN cạnh có khoảng cách nhỏ nhất được chọn. Trong ACO cạnh sẽ được chọn ra ngẫu nhiên. Trọng số cao hơn có sắc xuất cao hơn
+
+- Trong NN một lần giải sẽ tìm ra một tuyến đường. Trong ACO một lần sẽ có một số lượng kiến đi tìm các đường khác nhau
+
+<!--
 
 Ant Colony Optimization
 -----------------------
 
 Trong số các tuyến đường nối đến các đỉnh còn lại
 
-- **NN**: tại mỗi nốt chọn tuyến đường ngắn nhất
+- **NN** : tại mỗi nốt chọn tuyến đường ngắn nhất
 
-- **ACO**: các tuyến đường được lựa chọn ngẫu nhiên, tuyến đường có trọng số cao hơn thì xác suất cao hơn
+- **ACO** : các tuyến đường được lựa chọn ngẫu nhiên, tuyến đường có trọng số cao hơn thì xác suất cao hơn
+
+-->
 
 ---
 
@@ -284,11 +395,11 @@ Xác suất được chọn của một cạnh bất kì được tính theo cô
 
 $$ P_{ij} = \frac{weight_{ij}}{\sum_{k \in unvisited}{} weight_{ik}} $$
 
-- $i$ là id của đỉnh hiện tại
+- $i$ : id của đỉnh hiện tại
 
-- $j$ là id của một đỉnh bất kì chưa thăm
+- $j$ : id của một đỉnh bất kì chưa thăm
 
-- $k$ nằm trong tập các đỉnh chưa thăm
+- $unvisited$ : tập các đỉnh chưa thắm
 
 ---
 
@@ -311,11 +422,15 @@ Ant Colony Optimization
 Ant Colony Optimization
 -----------------------
 
-Cập nhật pheromone cho tuyến đường:
+Cuối mỗi vòng lặp pheromone được cập nhật lại:
 
-- Sau mỗi chu kì pheromone sẽ bay hơi đi với tỉ lệ là $\rho$
+- pheromone sẽ bay hơi đi với tỉ lệ là $\rho$
 
-$$ pheromones_{xy} = (1 - \rho) * pheromones_{xy} \forall x, y \in graph $$
+$$ \tau_{xy} = (1 - \rho) * \tau_{xy} $$
+
+$\tau$ : lượng pheromone
+
+$x, y$ : id của các đỉnh của đồ thị
 
 ---
 
@@ -325,7 +440,7 @@ Ant Colony Optimization
 - Mỗi con kiến sẽ nhả ra trên mỗi cạnh mà nó đi qua một lượng pheromone
 - Lượng pheromone nhả ra phụ thuộc vào độ dài của cả tuyến đường
 
-$$ pheromones_{xy}^k = \frac{Q}{L_k} \forall x, y \in graph \forall ant_k $$
+$$ pheromones_{xy}^k = \frac{Q}{L_k} \forall x, y \in nodes|k \in ants $$
 
   + $Q$ là hằng số
   + $L_k$ là độ dài tuyến đường của con kiến thứ $k$
@@ -337,13 +452,11 @@ So sánh giữa ACO và NN
 
 NN:
 
-- Mỗi lần giải cho một kết quả duy nhất
-
-- Trọng số không đổi
-
-- Số lần giải có thể phụ thuộc vào số nốt có thể làm nốt gốc
+- Chỉ cho ra lời giải duy nhất
 
 - Kết quả thu được không phụ thuộc vào thứ tự thực hiện của lần giải đó mà chỉ phụ thuộc vào việc chọn nốt nào làm nốt gốc
+
+- Chi phí chỉ tối ưu một cách cụ bộ
 
 ---
 
@@ -352,25 +465,11 @@ So sánh giữa ACO và NN
 
 ACO:
 
-- Giải lại bài toán nhiều lần để có được kết quả tốt nhất
-
-- Trọng số thay đổi liên tục
-
-- Mỗi lần giải cho ra nhiều kết quả phụ thuộc vào số lượng kiến
+- Trọng số thay đổi từng lần giải
 
 - Lần giải sau thường cho kết quả tốt hơn lần giải trước
 
----
-
-So sánh giữa ACO và NN
-----------------------
-
-- Chu kì đầu tiên pheromone trên tất cả các cạnh được khởi tạo 
-là 1. Trọng số của các cạnh sẽ là $\frac{1}{d}$. Giống với NN
-
-- Kết thúc chu kì đầu tiên, pheromone trên tất cả các tuyến đường sẽ bay hơi
-
-- Các cạnh nằm trên các tuyến đường được kiến đi qua sẽ nhận thêm một lượng pheromone tỉ lệ nghịch với độ dài tuyến đường. Do đó tuyến đường ngắn hơn sẽ nhiều pheromone hơn
+- Số vòng lặp phụ thuộc vào lập trình viên
 
 ---
 
@@ -378,8 +477,7 @@ Ant Colony Optimization
 -----------------------
 
 Ưu điểm:
-
-- Đưa ra nhiều lời giải khác nhau. Tạo thêm nhiều option cho người chọn
+- Có thể đưa ra nhiều lời giải có chi phí tương đương
 
 - Lượng pheromone thay đổi giúp tối ưu hóa tuyến đường theo từng chu kì
 
@@ -480,6 +578,11 @@ Research Gate:
 - [Using Ant Colony Optimization (ACO) on Kinetic Modeling of the Acetoin Production in Lactococcus Lactis C7]
 
 [Using Ant Colony Optimization (ACO) on Kinetic Modeling of the Acetoin Production in Lactococcus Lactis C7]: https://www.researchgate.net/figure/237013254_fig1_Fig-1-Pyruvate-metabolisms-in-lactococcus-lactis-C7-Marcel-et-al-2002
+
+---
+
+Reference
+----------
 
 Wiki:
 
