@@ -1,8 +1,7 @@
 /**
  * @param {number[]} arr
  */
-export function sumOf(arr)
-{
+export function sumOf(arr) {
 	return arr.reduce((preVal, curVal) => preVal + curVal);
 }
 
@@ -12,9 +11,8 @@ export function sumOf(arr)
  * 
  * @param {number} end
  */
-export function range(end)
-{
-	return Array.from({length: end}, (v, k) => k);
+export function range(end) {
+	return Array.from({ length: end }, (v, k) => k);
 }
 
 
@@ -23,8 +21,7 @@ export function range(end)
  * 
  * @param {number[]} probs probabilities
  */
-export function randomIndexFrom(probs)
-{
+export function randomIndexFrom(probs) {
 	let rand = Math.random();
 
 	let randId = -1;

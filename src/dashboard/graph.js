@@ -46,7 +46,7 @@ export class Graph {
 		}
 
 		weights = weights.map(v => {
-			return v.map(weight => Math.atan(1 - 1 / (Math.pow(weight / 10, 3)  + 1)) );
+			return v.map(weight => Math.atan(1 - 1 / ((weight / 10) ** 3  + 1)) );
 		})
 
 		this.weightElements.selectAll("line").remove();
