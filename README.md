@@ -1,4 +1,4 @@
-IT4040-AI
+Ant Colony Optimization
 =========
 
 ([English below](#requirement))
